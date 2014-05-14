@@ -1,0 +1,45 @@
+{
+  "name": "demo-gh-pages-public",
+  "private": true,
+  "version": "0.0.1",
+  "homepage": "http://bartvds.github.io/demo-gh-pages-public",
+  "author": {
+    "name": "Bart van der Schoor",
+    "url": "https://github.com/Bartvds"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bartvds/demo-gh-pages-public"
+  },
+  "bugs": {
+    "url": "https://github.com/Bartvds/demo-gh-pages-public/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/Bartvds/demo-gh-pages-public/blob/master/LICENSE-MIT"
+    }
+  ],
+  "keywords": [
+    "demo",
+    "gh-pages"
+  ],
+  "engines": {
+    "node": ">= 0.10.0 && < 0.11.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-cli": "~0.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-gh-pages": "~0.9.1",
+    "grunt-markdown": "^0.5.0"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  }
+}
