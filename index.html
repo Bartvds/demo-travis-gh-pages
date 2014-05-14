@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
+    <title>demo-gh-pages-public</title>
+    <meta name="description" content="DefinitelyTyped definition header utils">
     <meta name="author" content="Bart van der Schoor">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,7 +48,7 @@
 <h1 id="demo-gh-pages-publish">demo-gh-pages-publish</h1>
 <p><a href="http://travis-ci.org/Bartvds/demo-gh-pages-publish"><img src="https://secure.travis-ci.org/Bartvds/demo-gh-pages-publish.png?branch=master" alt="Build Status"></a></p>
 <blockquote>
-<p>Use Grunt and Travis-CI to publish content to github-pages</p>
+<p>Use Grunt and Travis-CI to publish content to gh-pages</p>
 </blockquote>
 <p><strong>Note</strong> pre-release: flow works but still polishing the text, spotting typos etc.</p>
 <h2 id="intro">Intro</h2>
@@ -60,7 +60,7 @@
 <p>You are looking at it!</p>
 <p>Refer to the content of the <a href="https://github.com/Bartvds/demo-gh-pages-publish/">master branch</a> to see the configurations used for this specific site. </p>
 <p>Check the <a href="https://github.com/Bartvds/demo-gh-pages-publish/tree/gh-pages">gh-pages</a> branch and view <a href="http://bartvds.github.io/demo-gh-pages-publish">the result</a> in your browser. </p>
-<p>This bare-bones demo will render the <code>README.md</code> to html using <a href="https://www.npmjs.org/package/grunt-markdown">grunt-markdown</a>. This is a simple example to show the process, but the flow can be used with any site generator (we use it with <a href="http://docpad.org/">docpad</a>). </p>
+<p>This bare-bones demo will render the <code>README.md</code> to html using <a href="https://www.npmjs.org/package/grunt-markdown">grunt-markdown</a>. This is a simple example to show the general process, but the flow can be used with any site generator (for example we use it with <a href="http://docpad.org/">docpad</a>). </p>
 <p>There are so many great grunt plugins anything is possible, and if that is not enough you can use grunt to work with pretty much any npm module or shell command.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>We assume a few things to get started quickly:</p>
@@ -84,18 +84,18 @@
 <pre><code class="lang-bash"><span class="variable">$ </span>gem install travis</code></pre>
 <h2 id="guide">Guide</h2>
 <p>Follow these steps to set it up for you project. To get started you can copy the code from <a href="https://github.com/Bartvds/demo-gh-pages-publish/">this live example</a>.</p>
-<h4 id="create-a-project-that-generates-a-static-site">Create a project that generates a static site</h4>
+<h3 id="create-a-project-that-generates-a-static-site">Create a project that generates a static site</h3>
 <ul>
 <li>Host it on github in the master branch.</li>
 <li>Configure a Gruntfile (or start from the example).</li>
 <li>Output the site content to the <code>./public</code> directory.</li>
 </ul>
 <p>To keep the example simple we use <a href="https://www.npmjs.org/package/grunt-markdown">grunt-markdown</a> to convert the <code>README.md</code> to html, wrapped in a simple template.</p>
-<h4 id="create-a-gh-pages-branch-on-github-com">Create a &#39;gh-pages&#39; branch on github.com</h4>
+<h3 id="create-a-gh-pages-branch-on-github-com">Create a &#39;gh-pages&#39; branch on github.com</h3>
 <ul>
 <li>Using your terminal or the github website interface. </li>
 </ul>
-<h4 id="configure-the-grunt-gh-pages-plugin-">Configure the &#39;grunt-gh-pages&#39; plugin.</h4>
+<h3 id="configure-the-grunt-gh-pages-plugin-">Configure the &#39;grunt-gh-pages&#39; plugin.</h3>
 <ul>
 <li>See the example Gruntfile. </li>
 <li>Notice the example has two targets:<ul>
@@ -105,22 +105,26 @@
 </ul>
 </li>
 <li>It is <strong>very important</strong> that the target with the token is set to <code>silent: true</code> or it will leak your token in the build log!</li>
+<li>Make sure the <code>user</code> variable has a valid name and email (the example it reads from package.json)<ul>
+<li>Github will not accept commits without this.</li>
+</ul>
+</li>
 <li>For more info see the <a href="https://www.npmjs.org/package/grunt-gh-pages">grunt-gh-pages documentation</a>.</li>
 </ul>
-<h4 id="do-a-publish-test">Do a publish test</h4>
+<h3 id="do-a-publish-test">Do a publish test</h3>
 <ul>
 <li>Make sure your site builds correctly to the <code>./public</code> folder.</li>
 <li>Push the first version to <code>gh-pages</code> using the <code>$ grunt publish</code> task. It will ask for your user-name/password.</li>
 <li>Check your repository on github.com and make sure the <code>gh-pages</code> branch has your content. </li>
 <li>Browse to the github.io url of your repos and make sure you see your site. </li>
 </ul>
-<h4 id="activate-the-travis-webhooks-for-your-project">Activate the Travis webhooks for your project</h4>
+<h3 id="activate-the-travis-webhooks-for-your-project">Activate the Travis webhooks for your project</h3>
 <ul>
 <li>Go to <a href="https://travis-ci.org/profile">https://travis-ci.org/profile</a>.</li>
 <li>Sync your github account to refresh the list of repositories.</li>
 <li>Enable Travis for this project (see <a href="http://docs.travis-ci.com/user/getting-started/#Step-two%3A-Activate-GitHub-Webhook">step #2 of the docs</a>)</li>
 </ul>
-<h4 id="create-your-travis-yml-in-the-project-root-">Create your <code>.travis.yml</code> in the project root.</h4>
+<h3 id="create-your-travis-yml-in-the-project-root-">Create your <code>.travis.yml</code> in the project root.</h3>
 <ul>
 <li>Copy the the content from the example.</li>
 <li>Notice the secure value, it is encrypted using public key cryptography. <ul>
@@ -131,7 +135,7 @@
 <li>Make sure the <code>script</code> runs the correct task (eg: including the site build and the <code>grunt-gh-pages</code> target that is set to use the token in the Gruntfile).</li>
 <li>Validate the content using <a href="http://docs.travis-ci.com/user/travis-lint/">travis-lint</a>.</li>
 </ul>
-<h4 id="create-an-oauth-token-for-your-github-account-">Create an OAuth token for your github account.</h4>
+<h3 id="create-an-oauth-token-for-your-github-account-">Create an OAuth token for your github account.</h3>
 <ul>
 <li>Go to <a href="https://github.com/settings/applications">https://github.com/settings/applications</a>.</li>
 <li>In the &#39;personal-access-tokens&#39; section click the &#39;Generate new token&#39; button:<ul>
@@ -145,7 +149,7 @@
 <li>The repo` scope gives write access to all your public repos! Keep your tokens safe! <em>Never</em> save somewhere to remember it. Instead encrypt it and then forget the original.</li>
 <li>Revoke tokens you don&#39;t really use.</li>
 </ul>
-<h4 id="add-the-token-to-the-secure-section-in-travis-yml-">Add the token to the secure section in <code>.travis.yml</code></h4>
+<h3 id="add-the-token-to-the-secure-section-in-travis-yml-">Add the token to the secure section in <code>.travis.yml</code></h3>
 <ul>
 <li>Remove the existing variable (the big base64 string).</li>
 <li>Use the travis gem to store the token as <code>GH_TOKEN</code> environment variable. (more info in the <a href="http://docs.travis-ci.com/user/build-configuration/#Secure-environment-variables">docs</a>)</li>
@@ -155,7 +159,7 @@
 <ul>
 <li>Check the <code>.travis.yml</code> and make sure a new value is set.</li>
 </ul>
-<h4 id="deploy-your-site">Deploy your site</h4>
+<h3 id="deploy-your-site">Deploy your site</h3>
 <ul>
 <li>Add the <code>./public</code> folder to <code>.gitignore</code></li>
 <li>Commit the source files.</li>
@@ -179,12 +183,12 @@
 <li>Your gh-pages site is now published.</li>
 <li>Browse to the github.io url of your repos and make sure you see the expected changes.</li>
 </ul>
-<h4 id="wrap-it-up">Wrap it up</h4>
+<h3 id="wrap-it-up">Wrap it up</h3>
 <ul>
-<li>Feel awesome for setting up continuous integration!</li>
-<li>Leave a ticket if you got any feedback.</li>
-<li>Share this guide with friends and share the fun.</li>
 <li>Fork the repos and send a PR if you have fixes or clarifications!</li>
+<li>Leave a ticket if you encountered problems or have any feedback.</li>
+<li>Share this guide with friends and share the fun.</li>
+<li>Feel awesome for setting up continuous integration!</li>
 </ul>
 <h2 id="security">Security</h2>
 <p>You should be aware of the two main things that can go bad:</p>
@@ -194,15 +198,13 @@
 </ol>
 <p>Always double-check your settings and development logs. </p>
 <p>If you leak your token just revoke it quickly and maybe check your Github <a href="https://github.com/settings/security">security activity</a>. Then create a new token, again making sure you limit the scope. A token is harmless after you revoked it (except to your bruised ego).</p>
-<p>Keep in mind that anyone with commit access to the repository can modify the build to output the decrypted token to the build log of the project. So make sure only sanitised code lands in your branch (check pull requests etc) and trust your collaborators.</p>
-<p>If you need this to work in a project with many collaborators and don&#39;t want to expose your account then you can create a machine user (bot account) and setup a github organisation. Then give the bot commit access to your repository and create an Oath token for from that account. This is allowed per TOS, see <a href="https://help.github.com/articles/managing-deploy-keys#machine-users">https://help.github.com/articles/managing-deploy-keys#machine-users</a>.</p>
+<p>If you need to print the hidden output of a task that is using your token and there really is no other way then you could opt to allow the task to leak it to the logs, as long as you immediately revoke that token. Don&#39;t forget this or somebody will pwn your repos (seriously).</p>
+<p>Keep in mind that anyone with commit access to the repository can modify the grunt configuration to output the decrypted token to the build log of the project. So make sure you trust your collaborators and verify sanitised code lands in your branch (check pull requests etc).</p>
+<p>If you need this to work in a project with many collaborators and don&#39;t want to expose your account then you can create a machine user (bot account). Then give the bot commit access to your repository and create an OAuth token for from that account. Github allows this, see <a href="https://help.github.com/articles/managing-deploy-keys#machine-users">https://help.github.com/articles/managing-deploy-keys#machine-users</a>.</p>
 <h2 id="links">Links</h2>
-<p>Some links for more information:</p>
+<p>Travis</p>
 <ul>
-<li><p>Travis</p>
-</li>
-<li><p><a href="http://docs.travis-ci.com/">http://docs.travis-ci.com/</a>    </p>
-</li>
+<li><a href="http://docs.travis-ci.com/">http://docs.travis-ci.com/</a>    </li>
 <li><a href="http://docs.travis-ci.com/user/getting-started/">http://docs.travis-ci.com/user/getting-started/</a></li>
 <li><a href="http://docs.travis-ci.com/user/build-configuration/#Secure-environment-variables">http://docs.travis-ci.com/user/build-configuration/#Secure-environment-variables</a></li>
 <li><a href="http://docs.travis-ci.com/user/encryption-keys/">http://docs.travis-ci.com/user/encryption-keys/</a></li>
@@ -211,6 +213,8 @@
 <ul>
 <li><a href="https://pages.github.com/">https://pages.github.com/</a></li>
 <li><a href="https://github.com/settings/applications">https://github.com/settings/applications</a></li>
+<li><a href="https://github.com/settings/security">https://github.com/settings/security</a></li>
+<li><a href="https://developer.github.com/v3/oauth/#scopes">https://developer.github.com/v3/oauth/#scopes</a></li>
 <li><a href="https://help.github.com/articles/managing-deploy-keys#machine-users">https://help.github.com/articles/managing-deploy-keys#machine-users</a>  </li>
 </ul>
 <p>Grunt</p>
@@ -230,13 +234,13 @@
 <pre><code class="lang-bash"><span class="variable">$ </span>grunt build</code></pre>
 <p>Clean <code>./public</code></p>
 <pre><code class="lang-bash"><span class="variable">$ </span>grunt clean</code></pre>
-<p>Build &amp; push website using CLI name/password</p>
+<p>Build &amp; push website using CLI user-name/password</p>
 <pre><code class="lang-bash"><span class="variable">$ </span>grunt publish</code></pre>
 <h2 id="thanks">Thanks</h2>
 <ul>
-<li>Tim Schau - for creating grunt-gh-pages</li>
+<li>Tim Schau (@tschaub)- for creating grunt-gh-pages</li>
 <li>gruntjs - powerful tasks runner with near limitless choice of plugins</li>
-<li>github - changing the game with powerful version control and project tools</li>
+<li>github - changing the game with free version control and capable project tools</li>
 <li>travis - being a classy gent and introducing many people to continuous integration</li>
 <li>you - for being awesome</li>
 </ul>
@@ -247,7 +251,7 @@
 
 
     <hr/>
-    <p>Generated at 2014-05-14T05:40:01.047Z</p>
+    <p>Generated at 2014-05-14T06:03:23.942Z</p>
 </div>
 </body>
 </html>
