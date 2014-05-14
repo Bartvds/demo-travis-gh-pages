@@ -17,7 +17,7 @@
             font-size: 0.95em;
         }
         .col {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0px auto;
             padding: 1em;
         }
@@ -183,7 +183,8 @@
 </ul>
 </li>
 <li>Regenerate or revoke tokens as much as you like (eg: if you leaked it somewhere you just revoke it and get a new one). </li>
-<li>The repo` scope gives write access to all your public repos! Keep your tokens safe! <em>Never</em> save somewhere to remember it. Instead encrypt it and then forget the original.</li>
+<li>The <code>repo</code> scope gives write access to all your public repos! Keep your tokens safe! <em>Never</em> save somewhere to
+remember it. Instead encrypt it and then forget the original.</li>
 <li>Revoke tokens you don&#39;t really use.</li>
 </ul>
 <h3 id="add-the-token-to-the-secure-section-in-travis-yml-">Add the token to the secure section in <code>.travis.yml</code></h3>
@@ -211,13 +212,13 @@
 <li>Check the log for status and errors.<ul>
 <li>Notice how it says <code>$ export GH_TOKEN=[secure]</code> near the start of the log.</li>
 <li>Scan the log output, it should look similar to what you see in your own terminal.</li>
-<li>Check if you didn&#39;t log your environment vars and token somewhere</li>
-<li>Fix any build errors and push your changes</li>
-<li>Check if the expected tasks ran, near the end you&#39;d see <code>Running &quot;gh-pages:deploy&quot; (gh-pages) task</code></li>
+<li>Check if you didn&#39;t log your environment vars and token somewhere.</li>
+<li>Fix any build errors and push your changes, and a new build will start.</li>
+<li>Near the end you&#39;d see <code>Running &quot;gh-pages:deploy&quot; (gh-pages) task</code></li>
 </ul>
 </li>
 <li>It should end at <code>Done. Your build exited with 0.</code></li>
-<li>Your gh-pages site is now published.</li>
+<li>Your gh-pages site is now published!</li>
 <li>Browse to the github.io url of your repos and make sure you see the expected changes.</li>
 </ul>
 <h3 id="wrap-it-up">Wrap it up</h3>
@@ -288,7 +289,7 @@
 
 
     <hr/>
-    <p>Generated at 2014-05-14T08:43:47.254Z</p>
+    <p>Generated at 2014-05-14T08:51:05.439Z</p>
 </div>
 </body>
 </html>
