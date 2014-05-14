@@ -5,7 +5,8 @@
   "homepage": "http://bartvds.github.io/demo-gh-pages-public",
   "author": {
     "name": "Bart van der Schoor",
-    "url": "https://github.com/Bartvds"
+    "url": "https://github.com/Bartvds",
+    "email": "bartvanderschoor@gmail.com"
   },
   "repository": {
     "type": "git",
