@@ -3,6 +3,11 @@ node_js:
 - '0.10'
 before_script:
 - npm install -g grunt-cli
+after_script:
+- grunt deploy
+branches:
+  only:
+    - master
 env:
   global:
     secure: AhZueSaFQR1ceG/iiMG8ItllLyRPexG4M9CFCUI075J710Zkx0wyMWqZv9uPoS/leqtknsQWwsu5AGGxBbGlRCTjdJD6ZOC2D5iu6AWj1gs72Jg3I8sPjKHucEreXfCxi0ULWenR8y8jUZTVtQofR8+qfrB3mnSevVE3QQZ+zOU=
