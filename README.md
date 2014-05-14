@@ -18,7 +18,7 @@ The functionality depends on [grunt-gh-pages](https://www.npmjs.org/package/grun
 
 Using this you can automate exporting documentation for your project or publish any other static site you build with Grunt.
 
-The build triggers after every commit to the specified branch, and will also re-publish your site after you merge a Pull Request or after using the code editor on github.com. This is a simple form of *continuous integration*.
+The build triggers after every commit to the specified branch, and will also re-publish your site after you merge a Pull Request or after using the code editor on github.com. This is a simple form of *continuous deployment*.
 
 This example uses Grunt but most of the information is valid for other task runners, except you'd need to find a plugin that can use an OAuth token to push content to github.
 
@@ -38,7 +38,7 @@ There are so many great Grunt plugins anything is possible, and if that is not e
 
 Intermediate skills
 
--	Be comfortable using Github and ready to get hands-on with continuous integration.
+-	Be comfortable using Github and ready to get hands-on with continuous deployment.
 -	Have some skill in reading docs and figuring things out if something unexpected turns up.
 -	Have some experience configuring Grunt tasks and use it to build a static website.
 
@@ -180,7 +180,7 @@ $ travis encrypt GH_TOKEN=your_oath_token --add
 
 ### Wrap it up
 
--	Feel awesome for setting up continuous integration!
+-	Feel awesome for setting up continuous deployment!
 -	Send a PR if you have fixes or clarifications.
 -	Leave a [ticket](https://github.com/Bartvds/demo-travis-gh-pages/issues) if you found problems or have feedback.
 -	Share this guide with friends and spread the fun.
@@ -269,7 +269,7 @@ $ grunt publish
 -	Tim Schau (@tschaub)- for creating grunt-gh-pages
 -	gruntjs - powerful tasks runner with near limitless choice of plugins
 -	github - changing the game with free version control and capable project tools
--	travis - being a classy gent and introducing many people to continuous integration
+-	travis - being a classy gent and introducing many people to continuous deployment
 -	you - for being awesome
 
 
