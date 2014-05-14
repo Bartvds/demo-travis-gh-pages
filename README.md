@@ -1,10 +1,8 @@
-# demo-travis-gh-pages
-
-[![Build Status](https://secure.travis-ci.org/Bartvds/demo-travis-gh-pages.png?branch=master)](http://travis-ci.org/Bartvds/demo-travis-gh-pages)
+# demo-travis-gh-pages [![Build Status](https://secure.travis-ci.org/Bartvds/demo-travis-gh-pages.png?branch=master)](http://travis-ci.org/Bartvds/demo-travis-gh-pages)
 
 > Use Grunt and Travis-CI to publish content to gh-pages
 
-**Warning** pre-release version: testing in other projects, polishing the text, spotting typos etc. 
+**Warning** Beta version: logic should be good, still doing some testing, polishing the text, spotting typos etc.
 
 **Note** If you have any questions or feedback then feel free to leave a [ticket](https://github
 .com/Bartvds/demo-travis-gh-pages/issues).
@@ -104,9 +102,6 @@ if ( process.env.TRAVIS === 'true'
 ) {
 	grunt.log.writeln('executing deployment');
 	grunt.task.run('gh-pages:deploy');
-}
-else {
-	grunt.log.writeln('skipping deployment');
 }
 ````
 
