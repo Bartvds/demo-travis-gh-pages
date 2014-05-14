@@ -4,8 +4,12 @@
 
 > Use Grunt and Travis-CI to publish content to gh-pages
 
-**Note** pre-release: flow works but still polishing the text, spotting typos etc.
+**Note** pre-release: testing in other projects, polishing the text, spotting typos etc. 
 
+If you have some results with this then please leave a [ticket](https://github.com/Bartvds/demo-gh-pages-publish/issues).
+
+-	[live](http://bartvds.github.io/demo-gh-pages-publish)
+-	[source](https://github.com/Bartvds/demo-gh-pages-publish/)
 
 ## Intro
 
