@@ -1,11 +1,9 @@
 /node_modules
 /bower_components
+/.idea
 npm-debug.log
 tmp
 
-/.idea
-/tsd-cache
 /public
-/dist
 /*.tgz
 /.grunt
