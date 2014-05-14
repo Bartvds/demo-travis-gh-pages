@@ -1,9 +1,9 @@
 {
-  "name": "demo-gh-pages-public",
+  "name": "demo-travis-gh-pages",
   "private": true,
   "version": "0.0.1",
   "description": "DefinitelyTyped definition header utils",
-  "homepage": "http://bartvds.github.io/demo-gh-pages-public",
+  "homepage": "http://bartvds.github.io/demo-travis-gh-pages",
   "author": {
     "name": "Bart van der Schoor",
     "url": "https://github.com/Bartvds",
@@ -11,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Bartvds/demo-gh-pages-public"
+    "url": "https://github.com/Bartvds/demo-travis-gh-pages"
   },
   "bugs": {
-    "url": "https://github.com/Bartvds/demo-gh-pages-public/issues"
+    "url": "https://github.com/Bartvds/demo-travis-gh-pages/issues"
   },
   "licenses": [
     {

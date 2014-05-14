@@ -1,15 +1,15 @@
-# demo-gh-pages-publish
+# demo-travis-gh-pages
 
-[![Build Status](https://secure.travis-ci.org/Bartvds/demo-gh-pages-publish.png?branch=master)](http://travis-ci.org/Bartvds/demo-gh-pages-publish)
+[![Build Status](https://secure.travis-ci.org/Bartvds/demo-travis-gh-pages.png?branch=master)](http://travis-ci.org/Bartvds/demo-travis-gh-pages)
 
 > Use Grunt and Travis-CI to publish content to gh-pages
 
 **Warning** pre-release version: testing in other projects, polishing the text, spotting typos etc. 
 
-**Note** If you have some results with this then please leave a [ticket](https://github.com/Bartvds/demo-gh-pages-publish/issues).
+**Note** If you have some results with this then please leave a [ticket](https://github.com/Bartvds/demo-travis-gh-pages/issues).
 
--	View the [source repos](https://github.com/Bartvds/demo-gh-pages-publish/).
--	Check the result on [github.io](http://bartvds.github.io/demo-gh-pages-publish).
+-	View the [source repos](https://github.com/Bartvds/demo-travis-gh-pages/).
+-	Check the result on [github.io](http://bartvds.github.io/demo-travis-gh-pages).
 
 ## Intro
 
@@ -28,9 +28,9 @@ This example uses Grunt but most of the information is valid for other task runn
 
 You are looking at it!
 
-Refer to the content of the [master branch](https://github.com/Bartvds/demo-gh-pages-publish/) to see the configurations used for this specific site. 
+Refer to the content of the [master branch](https://github.com/Bartvds/demo-travis-gh-pages/) to see the configurations used for this specific site.
 
-Check the [gh-pages](https://github.com/Bartvds/demo-gh-pages-publish/tree/gh-pages) branch and view [the result](http://bartvds.github.io/demo-gh-pages-publish) in your browser. 
+Check the [gh-pages](https://github.com/Bartvds/demo-travis-gh-pages/tree/gh-pages) branch and view [the result](http://bartvds.github.io/demo-travis-gh-pages) in your browser.
 
 This bare-bones demo will render the `README.md` to html using [grunt-markdown](https://www.npmjs.org/package/grunt-markdown). This is a simple example to show the general process, but the flow can be used with any site generator (for example we use it with [docpad](http://docpad.org/)). 
 
@@ -62,7 +62,7 @@ $ gem install travis
 
 ## Guide
 
-Follow these steps to set it up for you project. To get started you can copy the code from [this live example](https://github.com/Bartvds/demo-gh-pages-publish/).
+Follow these steps to set it up for you project. To get started you can copy the code from [this live example](https://github.com/Bartvds/demo-travis-gh-pages/).
 
 
 ### Create a project that generates a static site
