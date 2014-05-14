@@ -23,7 +23,8 @@ module.exports = function (grunt) {
 				templateContext: {
 					title: '<%=pkg.title%>',
 					description: '<%=pkg.description%>',
-					author: '<%=pkg.author.name%>'
+					author: '<%=pkg.author.name%>',
+					date: new Date().toISOString()
 				},
 				markdownOptions: {
 					gfm: true,
@@ -37,17 +38,19 @@ module.exports = function (grunt) {
 		},
 		'gh-pages': {
 			options: {
-				repo: 'https://github.com/Bartvds/demo-gh-pages.git',
+				repo: 'https://github.com/Bartvds/demo-gh-pages-publish.git',
 				branch: 'gh-pages',
 				base: 'public'
 			},
 			publish: {
 				options: {
+					message: 'Publish gh=pages'
 				},
 				src: ['**/*']
 			},
 			deploy: {
 				options: {
+					message: 'Publish gh=pages (auto)',
 					repo: 'https://' + process.env.GH_TOKEN + '@github.com/Bartvds/demo-gh-pages.git',
 					silent: true
 				},
