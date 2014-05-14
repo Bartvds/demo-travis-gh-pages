@@ -38,7 +38,6 @@ Intermediate skills
 -	Be comfortable using Github and ready to get hands-on with continuous integration.
 -	Have some skill in reading docs and figuring things out if something unexpected turns up.
 -	Have some experience configuring Grunt tasks and use it to build a static website.
-	-	Use any site generator you like, as long as it outputs a complete site into a single directory.
 
 Have some runtimes installed:
 
