@@ -74,7 +74,7 @@ To keep the example simple we use [grunt-markdown](https://www.npmjs.org/package
 -	Using your terminal or the github website interface. 
 
 
-### Configure the 'grunt-gh-pages' plugin.
+### Configure the 'grunt-gh-pages' plugin
 
 -	See the example Gruntfile. 
 -	Notice the example has two targets:
@@ -102,7 +102,7 @@ To keep the example simple we use [grunt-markdown](https://www.npmjs.org/package
 -	Enable Travis for this project (see [step #2 of the docs](http://docs.travis-ci.com/user/getting-started/#Step-two%3A-Activate-GitHub-Webhook))
 
 
-### Create your `.travis.yml` in the project root.
+### Create your `.travis.yml` in the project root
 
 -	Copy the the content from the example.
 -	Notice the secure value, it is encrypted using public key cryptography. 
@@ -112,7 +112,7 @@ To keep the example simple we use [grunt-markdown](https://www.npmjs.org/package
 -	Validate the content using [travis-lint](http://docs.travis-ci.com/user/travis-lint/).
 
 
-### Create an OAuth token for your github account.
+### Create an OAuth token for your github account
 
 - Go to https://github.com/settings/applications.
 - In the 'personal-access-tokens' section click the 'Generate new token' button:
@@ -162,10 +162,10 @@ $ travis encrypt GH_TOKEN=your_oath_token --add
 
 ### Wrap it up
 
--	Fork the repos and send a PR if you have fixes or clarifications!
--	Leave a ticket if you encountered problems or have any feedback.
--	Share this guide with friends and share the fun.
 -	Feel awesome for setting up continuous integration!
+-	Send a PR if you have fixes or clarifications!
+-	Leave a ticket if you found problems or have feedback.
+-	Share this guide with friends and spread the fun.
 
 
 ## Security
