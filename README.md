@@ -143,7 +143,8 @@ else {
 	-	In the popup *deselect* all scopes except `repo`.
 	-	Click 'Generate token' and copy the hex string.
 -	Regenerate or revoke tokens as much as you like (eg: if you leaked it somewhere you just revoke it and get a new one). 
--	The repo` scope gives write access to all your public repos! Keep your tokens safe! *Never* save somewhere to remember it. Instead encrypt it and then forget the original.
+-	The `repo` scope gives write access to all your public repos! Keep your tokens safe! *Never* save somewhere to
+remember it. Instead encrypt it and then forget the original.
 -	Revoke tokens you don't really use.
 
 
@@ -174,11 +175,11 @@ $ travis encrypt GH_TOKEN=your_oath_token --add
 -	Check the log for status and errors.
 	-	Notice how it says `$ export GH_TOKEN=[secure]` near the start of the log.
 	-	Scan the log output, it should look similar to what you see in your own terminal.
-	-	Check if you didn't log your environment vars and token somewhere
-	-	Fix any build errors and push your changes
-	-	Check if the expected tasks ran, near the end you'd see `Running "gh-pages:deploy" (gh-pages) task`
+	-	Check if you didn't log your environment vars and token somewhere.
+	-	Fix any build errors and push your changes, and a new build will start.
+	-   Near the end you'd see `Running "gh-pages:deploy" (gh-pages) task`
 -	It should end at `Done. Your build exited with 0.`
--	Your gh-pages site is now published.
+-	Your gh-pages site is now published!
 -	Browse to the github.io url of your repos and make sure you see the expected changes.
 
 
