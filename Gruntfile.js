@@ -52,7 +52,7 @@ module.exports = function (grunt) {
 				options: {
 					message: 'Publish gh-pages (auto)',
 					repo: 'https://' + process.env.GH_TOKEN + '@github.com/Bartvds/demo-gh-pages-publish.git',
-					silent: true
+					silent: false
 				},
 				src: ['**/*']
 			}
