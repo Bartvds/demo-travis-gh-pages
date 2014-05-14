@@ -2,9 +2,9 @@
 
 [![Build Status](https://secure.travis-ci.org/bartvds/demo-gh-pages-publish.png?branch=master)](http://travis-ci.org/bartvds/demo-gh-pages-publish)
 
-> Demo showing how to publish github-pages from Travis-CI
+> Use grunt and Travis-CI to publish content to your github-pages.
 
-Source files live in `./src`, and the guide is published to [bartvds.github.io/demo-gh-pages-publish](http://bartvds.github.io/demo-gh-pages-publish).
+Source files live in `./src`, the guide uses the described flow to publish to [bartvds.github.io/demo-gh-pages-publish](http://bartvds.github.io/demo-gh-pages-publish).
 
 ## Build
 

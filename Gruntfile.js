@@ -52,6 +52,14 @@ module.exports = function (grunt) {
 				options: {
 				},
 				src: ['**/*']
+			},
+			deploy: {
+
+				options: {
+				},
+				src: ['**/*']
+				repo: 'https://' + process.env.GH_TOKEN + '@github.com/user/private-repo.git',
+				silent: true
 			}
 		}
 	});
