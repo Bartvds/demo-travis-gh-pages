@@ -199,9 +199,9 @@ If you leak your token just revoke it quickly and maybe check your Github [secur
 
 If you need to print the hidden output of a task that is using your token and there really is no other way then you could opt to allow the task to leak it to the logs, as long as you immediately revoke that token. Don't forget this or somebody will pwn your repos (seriously).
 
-Keep in mind that anyone with commit access to the repository can modify the Grunt configuration to output the decrypted token to the build log of. So make sure you trust your collaborators and verify no hostile code lands in your branch (check pull requests etc).
+Keep in mind that anyone with commit access to the repository can modify the Grunt configuration to output the decrypted token to the build log. So make sure you trust your collaborators and verify no hostile code lands in your branch (check pull requests etc).
 
-If you need this to work in a project with many collaborators and don't want to expose your account then you can create a machine user (bot account). Then give the bot commit access to your repository and create an OAuth token for that account. Github allows this, see https://help.github.com/articles/managing-deploy-keys#machine-users.
+If you need this to work in a project with many collaborators and don't want to expose your whole account then you can create a machine user (bot account). Then give the bot commit access to your repository and create an OAuth token for the bot account. Github allows this, see https://help.github.com/articles/managing-deploy-keys#machine-users.
 
 
 ## Links
