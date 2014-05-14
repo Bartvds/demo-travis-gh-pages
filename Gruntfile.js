@@ -63,6 +63,14 @@ module.exports = function (grunt) {
 		}
 	});
 
+	grunt.registerTask('check-deploy', function() {
+		this.requires(['build']);
+
+		if (process.env.TRAVIS && process.env.TRAVIS_SECURE_ENV_VARS && !process.env.TRAVIS_PULL_REQUEST) {
+			grunt.task.run('gh-pages:deploy');
+		}
+	});
+
 	grunt.registerTask('prep', [
 		'clean',
 		'jshint'
@@ -80,7 +88,7 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('deploy', [
 		'build',
-		'gh-pages:deploy'
+		'check-deploy'
 	]);
 
 	// whatever
