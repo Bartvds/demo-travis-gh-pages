@@ -67,7 +67,11 @@ module.exports = function (grunt) {
 		this.requires(['build']);
 
 		if (process.env.TRAVIS && process.env.TRAVIS_SECURE_ENV_VARS && !process.env.TRAVIS_PULL_REQUEST) {
+			grunt.log.writeln('executing deployment');
 			grunt.task.run('gh-pages:deploy');
+		}
+		else {
+			grunt.log.writeln('skipping deployment');
 		}
 	});
 
