@@ -38,20 +38,20 @@ module.exports = function (grunt) {
 		},
 		'gh-pages': {
 			options: {
-				repo: 'https://github.com/Bartvds/demo-travis-gh-pages.git',
 				branch: 'gh-pages',
 				base: 'public'
 			},
 			publish: {
 				options: {
+					repo: 'https://github.com/Bartvds/demo-travis-gh-pages.git',
 					message: 'Publish gh-pages'
 				},
 				src: ['**/*']
 			},
 			deploy: {
 				options: {
-					message: 'Publish gh-pages (auto)',
 					repo: 'https://' + process.env.GH_TOKEN + '@github.com/Bartvds/demo-travis-gh-pages.git',
+					message: 'Publish gh-pages (auto)',
 					silent: true,
 					user: {
 						name: '<%=pkg.author.name%>',
