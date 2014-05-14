@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="author" content="Bart van der Schoor">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        html, body {
+            font-family: "Open Sans", sans-serif;
+            background-color: #eee;
+            color: #555;
+        }
+        body {
+            overflow-y: visible;
+        }
+        .col {
+            max-width: 50em;
+            margin: 0px auto;
+            padding: 1em;
+        }
+        blockquote {
+            margin-left: 4px;
+            padding-left: 1em;
+            border-left: 4px solid #777;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: #777;
+        }
+        a, a:visited {
+            color: #666;
+        }
+        a:hover, a:active {
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+<div class="col">
+<h1 id="demo-gh-pages-publish">demo-gh-pages-publish</h1>
+<p><a href="http://travis-ci.org/bartvds/demo-gh-pages-publish"><img src="https://secure.travis-ci.org/bartvds/demo-gh-pages-publish.png?branch=master" alt="Build Status"></a></p>
+<blockquote>
+<p>Use grunt and Travis-CI to publish content to your github-pages</p>
+</blockquote>
+<p>This guide uses the described flow to publish to <a href="http://bartvds.github
+.io/demo-gh-pages-publish">bartvds.github.io/demo-gh-pages-publish</a></p>
+<p>:warning: work-in-progress</p>
+<p><a href="https://github.com/settings/applications">https://github.com/settings/applications</a></p>
+<p><a href="http://docs.travis-ci.com/user/build-configuration/#Secure-environment-variables">http://docs.travis-ci.com/user/build-configuration/#Secure-environment-variables</a></p>
+<p><a href="http://docs.travis-ci.com/user/encryption-keys/">http://docs.travis-ci.com/user/encryption-keys/</a></p>
+<p><a href="https://github.com/tschaub/grunt-gh-pages#optionssilent">https://github.com/tschaub/grunt-gh-pages#optionssilent</a></p>
+<h2 id="build">Build</h2>
+<p>Have grunt</p>
+<pre><code class="lang-bash"><span class="comment">$</span> <span class="comment">npm</span> <span class="comment">install</span> <span class="comment">grunt</span>-<span class="comment">cli</span> <span class="literal">-</span><span class="comment">g</code></pre>
+<p>Install dependencies</p>
+<pre><code class="lang-bash"><span class="variable">$ </span>npm install</code></pre>
+<p>Rebuild site in <code>./public/</code></p>
+<pre><code class="lang-bash"><span class="variable">$ </span>grunt build</code></pre>
+<p>Clean <code>./public/</code></p>
+<pre><code class="lang-bash"><span class="variable">$ </span>grunt build</code></pre>
+<h2 id="contributing">Contributing</h2>
+<p>Contributions are very welcome. In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using <a href="http://gruntjs.com/">Grunt</a>.</p>
+
+</div>
+</body>
+</html>
