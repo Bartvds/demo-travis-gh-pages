@@ -13,6 +13,7 @@
             font-family: "Open Sans", sans-serif;
             background-color: #eee;
             color: #555;
+            line-height: 1.5em;
         }
         body {
             overflow-y: visible;
@@ -36,12 +37,17 @@
         a:hover, a:active {
             color: #777;
         }
+        hr {
+            border: none;
+            border-top: 1px solid #888;
+        }
     </style>
 </head>
 <body>
 <div class="col">
 <%=content%>
 
+    <hr/>
     <p>Generated at <%=date%></p>
 </div>
 </body>
