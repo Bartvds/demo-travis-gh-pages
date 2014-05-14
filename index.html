@@ -16,11 +16,8 @@
             line-height: 1.6em;
             font-size: 0.95em;
         }
-        body {
-            overflow-y: visible;
-        }
         .col {
-            max-width: 55em;
+            max-width: 600px;
             margin: 0px auto;
             padding: 1em;
         }
@@ -30,6 +27,7 @@
         }
         h1 {
             font-weight: 300;
+            line-height: 2em;
         }
         a, a:visited {
             color: #666;
@@ -69,16 +67,17 @@
 <blockquote>
 <p>Use Grunt and Travis-CI to publish content to gh-pages</p>
 </blockquote>
-<p><strong>Note</strong> pre-release: testing in other projects, polishing the text, spotting typos etc. </p>
-<p>If you have some results with this then please leave a <a href="https://github.com/Bartvds/demo-gh-pages-publish/issues">ticket</a>.</p>
+<p><strong>Warning</strong> pre-release version: testing in other projects, polishing the text, spotting typos etc. </p>
+<p><strong>Note</strong> If you have some results with this then please leave a <a href="https://github.com/Bartvds/demo-gh-pages-publish/issues">ticket</a>.</p>
 <ul>
-<li><a href="http://bartvds.github.io/demo-gh-pages-publish">live</a></li>
-<li><a href="https://github.com/Bartvds/demo-gh-pages-publish/">source</a></li>
+<li>View the <a href="https://github.com/Bartvds/demo-gh-pages-publish/">source repos</a>.</li>
+<li>Check the result on <a href="http://bartvds.github.io/demo-gh-pages-publish">github.io</a>.</li>
 </ul>
 <h2 id="intro">Intro</h2>
-<p>This demo shows basic setup to use <a href="https://travis-ci.org/">Travis-CI</a> to build your static website using <a href="http://gruntjs.com/">Grunt</a> and publish it to <a href="https://pages.github.com/">github pages</a> after you commit your sources to a specific branch of your repository. The demo functionality depends on <a href="https://www.npmjs.org/package/grunt-gh-pages">grunt-gh-pages</a> and an encrypted OAuth token. </p>
+<p>This guide describes a setup to use <a href="https://travis-ci.org/">Travis-CI</a> to build your static website using <a href="http://gruntjs.com/">Grunt</a> and publish it to <a href="https://pages.github.com/">github pages</a> after you commit your sources to a specific branch of your repository. </p>
+<p>The functionality depends on <a href="https://www.npmjs.org/package/grunt-gh-pages">grunt-gh-pages</a> and an encrypted OAuth token. </p>
 <p>Using this you can automate exporting documentation for an code project, or publish any other static site you build with grunt. </p>
-<p>It triggers after every commit to the specified branch. So this will also re-publish your site after you merge a Pull Request (handy to get community contributions live quickly) or after using the code editor on github.com. This is a simple form of <em>continuous integration</em>.</p>
+<p>The build triggers after every commit to the specified branch, and will also re-publish your site after you merge a Pull Request or after using the code editor on github.com. This is a simple form of <em>continuous integration</em>.</p>
 <p>This example uses Grunt but most of the information is valid for other task runners, except you&#39;d need to find a plugin that can use an OAuth token to push content to github. </p>
 <h2 id="demo">Demo</h2>
 <p>You are looking at it!</p>
@@ -289,7 +288,7 @@
 
 
     <hr/>
-    <p>Generated at 2014-05-14T08:26:04.221Z</p>
+    <p>Generated at 2014-05-14T08:33:48.871Z</p>
 </div>
 </body>
 </html>
