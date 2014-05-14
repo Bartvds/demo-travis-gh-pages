@@ -82,7 +82,7 @@ To keep the example simple we use [grunt-markdown](https://www.npmjs.org/package
 -	Notice the example has two targets:
 	-	A target to run locally (for testing) that will ask for a user-name and password.
 	-	The target that will run on Travis using the OAuth token.
-	-   In the example it will look for a environment variable `GH_TOKEN`.
+	-	In the example it will look for a environment variable `GH_TOKEN`.
 	-	Make sure the branches and both urls are correct.
 -	It is **very important** that the target with the token is set to `silent: true` or it will leak your token in the build log!
 -	Make sure the `user` variable has a valid name and email (the example it reads from package.json)
@@ -93,7 +93,7 @@ To keep the example simple we use [grunt-markdown](https://www.npmjs.org/package
 
 -	Add a check to the Gruntfile for the Travis environment variables to conditionally run the build.
 -	See the example Gruntfile, it uses the following condition.
--   Note how the task only runs on commits (it ignores pull requests).
+-	Note how the task only runs on commits (it ignores pull requests).
 
 ````js
 if ( process.env.TRAVIS === 'true' 
@@ -136,11 +136,11 @@ if ( process.env.TRAVIS === 'true'
 - In the 'personal-access-tokens' section click the 'Generate new token' button:
 	-	It is recommended to create a separate token for every project.
 	-	Enter a descriptive name so you can identify it later.
-	-	In the popup *deselect* all scopes except `repo`.
+	-	In the popup *deselect* all scopes except `public_repo`.
 	-	Click 'Generate token' and copy the hex string.
 -	Regenerate or revoke tokens as much as you like (eg: if you leaked it somewhere you just revoke it and get a new one). 
--	The `repo` scope gives write access to all your public repos! Keep your tokens safe! *Never* save somewhere to
-remember it. Instead encrypt it and then forget the original.
+-	The `public_repo` scope gives write access to all your public repos.
+-	*Never* save un-encrypted tokens. Instead encrypt it and then forget the original.
 -	Revoke tokens you don't really use.
 
 
@@ -148,7 +148,7 @@ remember it. Instead encrypt it and then forget the original.
 
 -	Remove the existing variable (the big base64 string).
 -	Use the travis gem to store the token as `GH_TOKEN` environment variable. (more info in the [docs](http://docs.travis-ci.com/user/build-configuration/#Secure-environment-variables))
--   Run this command in your terminal (with your own token):
+-	Run this command in your terminal (with your own token):
 
 ````bash
 $ travis encrypt GH_TOKEN=your_oath_token --add
@@ -172,7 +172,7 @@ $ travis encrypt GH_TOKEN=your_oath_token --add
 	-	Scan the log output, it should look similar to what you see in your own terminal.
 	-	Check if you didn't log your environment vars and token somewhere.
 	-	Fix any build errors and push your changes, and a new build will start.
-	-   Look for `Running "gh-pages:deploy" (gh-pages) task` and see if it passed.
+	-	Look for `Running "gh-pages:deploy" (gh-pages) task` and see if it passed.
 -	The log should end at `Done. Your build exited with 0.`
 -	Your gh-pages site is now published!
 -	Browse to the github.io url of your repos and make sure you see the expected changes.
@@ -197,7 +197,7 @@ Always double-check your settings and development logs.
 
 If you leak your token just revoke it quickly and maybe check your Github [security activity](https://github.com/settings/security). Then create a new token, again making sure you limit the scope. A token is harmless after you revoked it (except to your bruised ego).
 
-If you need to print the hidden output of a task that is using your token and there really is no other way then you could opt to allow the task to leak it to the logs, as long as you immediately revoke that token. Don't forget this or somebody will pwn your repos (seriously).
+If you need to print the hidden output of a task that is using your token and there really is no other way then you could opt to allow the task to leak it to the logs, as long as you immediately revoke that token. Don't forget this or somebody will pwn your repositories.
 
 Keep in mind that anyone with commit access to the repository can modify the Grunt configuration to output the decrypted token to the build log. So make sure you trust your collaborators and verify no hostile code lands in your branch (check pull requests etc).
 
