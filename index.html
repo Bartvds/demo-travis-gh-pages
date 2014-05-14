@@ -45,13 +45,14 @@
             border-left: 4px solid #777;
         }
         code {
-            font-size: 1.15em
-        }
-        pre code {
-            display: block;
+            font-size: 1.10em;
+            padding: 1px 4px;
             background-color: #efefef;
             border: 1px solid #cfcfcf;
             border-radius: 3px;
+        }
+        pre code {
+            display: block;
             padding: 2px 6px;
             margin-left: 2px;
             margin-right: 2px;
@@ -68,23 +69,23 @@
 <p>Use Grunt and Travis-CI to publish content to gh-pages</p>
 </blockquote>
 <p><strong>Warning</strong> pre-release version: testing in other projects, polishing the text, spotting typos etc. </p>
-<p><strong>Note</strong> If you have some results with this then please leave a <a href="https://github.com/Bartvds/demo-travis-gh-pages/issues">ticket</a>.</p>
+<p><strong>Note</strong> If you have any questions or feedback then feel free to leave a <a href="https://github
+.com/Bartvds/demo-travis-gh-pages/issues">ticket</a>.</p>
 <ul>
 <li>View the <a href="https://github.com/Bartvds/demo-travis-gh-pages/">source repos</a>.</li>
 <li>Check the result on <a href="http://bartvds.github.io/demo-travis-gh-pages">github.io</a>.</li>
 </ul>
 <h2 id="intro">Intro</h2>
-<p>This guide describes a setup to use <a href="https://travis-ci.org/">Travis-CI</a> to build your static website using <a href="http://gruntjs.com/">Grunt</a> and publish it to <a href="https://pages.github.com/">github pages</a> after you commit your sources to a specific branch of your repository. </p>
+<p>This guide describes a setup to enable <a href="https://travis-ci.org/">Travis-CI</a> to build your static website using <a href="http://gruntjs.com/">Grunt</a> and publish it to <a href="https://pages.github.com/">github pages</a> after you commit your sources to a specific branch of your repository.</p>
 <p>The functionality depends on <a href="https://www.npmjs.org/package/grunt-gh-pages">grunt-gh-pages</a> and an encrypted OAuth token. </p>
-<p>Using this you can automate exporting documentation for an code project, or publish any other static site you build with grunt. </p>
+<p>Using this you can automate exporting documentation for your project or publish any other static site you build with Grunt.</p>
 <p>The build triggers after every commit to the specified branch, and will also re-publish your site after you merge a Pull Request or after using the code editor on github.com. This is a simple form of <em>continuous integration</em>.</p>
-<p>This example uses Grunt but most of the information is valid for other task runners, except you&#39;d need to find a plugin that can use an OAuth token to push content to github. </p>
+<p>This example uses Grunt but most of the information is valid for other task runners, except you&#39;d need to find a plugin that can use an OAuth token to push content to github.</p>
 <h2 id="demo">Demo</h2>
-<p>You are looking at it!</p>
 <p>Refer to the content of the <a href="https://github.com/Bartvds/demo-travis-gh-pages/">master branch</a> to see the configurations used for this specific site.</p>
-<p>Check the <a href="https://github.com/Bartvds/demo-travis-gh-pages/tree/gh-pages">gh-pages</a> branch and view <a href="http://bartvds.github.io/demo-travis-gh-pages">the result</a> in your browser.</p>
-<p>This bare-bones demo will render the <code>README.md</code> to html using <a href="https://www.npmjs.org/package/grunt-markdown">grunt-markdown</a>. This is a simple example to show the general process, but the flow can be used with any site generator (for example we use it with <a href="http://docpad.org/">docpad</a>). </p>
-<p>There are so many great grunt plugins anything is possible, and if that is not enough you can use grunt to work with pretty much any npm module or shell command.</p>
+<p>View <a href="http://bartvds.github.io/demo-travis-gh-pages">the result</a> in your browser, and check the <a href="https://github.com/Bartvds/demo-travis-gh-pages/tree/gh-pages">gh-pages</a> branch to see the output.</p>
+<p>This bare-bones demo will render the <code>README.md</code> to html using <a href="https://www.npmjs.org/package/Grunt-markdown">grunt-markdown</a>. This is a simple example to show the general process, but the flow can be used with any site generator (for example we use it with <a href="http://docpad.org/">docpad</a>).</p>
+<p>There are so many great Grunt plugins anything is possible, and if that is not enough you can use Grunt to work with pretty much any npm module or shell command.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Intermediate skills</p>
 <ul>
@@ -94,7 +95,7 @@
 </ul>
 <p>Have some runtimes installed:</p>
 <ul>
-<li><a href="http://nodejs.org/">nodejs</a> (to run grunt)</li>
+<li><a href="http://nodejs.org/">nodejs</a> (to run Grunt)</li>
 <li><a href="https://www.ruby-lang.org/en/installation/">ruby</a> (to run the travis gem)</li>
 <li>git v1.7.6 or better (for grunt-gh-pages) </li>
 </ul>
@@ -122,7 +123,8 @@
 <li>See the example Gruntfile. </li>
 <li>Notice the example has two targets:<ul>
 <li>A target to run locally (for testing) that will ask for a user-name and password.</li>
-<li>The target that will run on Travis using the OAuth token. In the example it will look for a environment variable <code>GH_TOKEN</code>.</li>
+<li>The target that will run on Travis using the OAuth token.</li>
+<li>In the example it will look for a environment variable <code>GH_TOKEN</code>.</li>
 <li>Make sure the branches and both urls are correct.</li>
 </ul>
 </li>
@@ -136,7 +138,8 @@
 <h3 id="configure-grunt-to-recognise-travis">Configure Grunt to recognise Travis</h3>
 <ul>
 <li>Add a check to the Gruntfile for the Travis environment variables to conditionally run the build.</li>
-<li>See the example Gruntfile. </li>
+<li>See the example Gruntfile, it uses the following condition.</li>
+<li>Note how the task only runs on commits (it ignores pull requests).</li>
 </ul>
 <pre><code class="lang-js"><span class="function"><span class="title">if</span> <span class="params">( process.env.<span class="variable">TRAVIS</span> === 'true' 
         &amp;&amp; process.env.<span class="variable">TRAVIS_SECURE_ENV_VARS</span> === 'true' 
@@ -161,7 +164,7 @@
 <li>Sync your github account to refresh the list of repositories.</li>
 <li>Enable Travis for this project (see <a href="http://docs.travis-ci.com/user/getting-started/#Step-two%3A-Activate-GitHub-Webhook">step #2 of the docs</a>)</li>
 </ul>
-<h3 id="create-your-travis-yml-in-the-project-root">Create your <code>.travis.yml</code> in the project root</h3>
+<h3 id="create-your-travis-yml-in-the-project-root">Create your &#39;.travis.yml&#39; in the project root</h3>
 <ul>
 <li>Copy the the content from the example.</li>
 <li>Notice the secure value, it is encrypted using public key cryptography. <ul>
@@ -187,12 +190,12 @@
 remember it. Instead encrypt it and then forget the original.</li>
 <li>Revoke tokens you don&#39;t really use.</li>
 </ul>
-<h3 id="add-the-token-to-the-secure-section-in-travis-yml-">Add the token to the secure section in <code>.travis.yml</code></h3>
+<h3 id="add-the-token-to-the-secure-section-in-travis-yml-">Add the token to the secure section in &#39;.travis.yml&#39;</h3>
 <ul>
 <li>Remove the existing variable (the big base64 string).</li>
 <li>Use the travis gem to store the token as <code>GH_TOKEN</code> environment variable. (more info in the <a href="http://docs.travis-ci.com/user/build-configuration/#Secure-environment-variables">docs</a>)</li>
+<li>Run this command in your terminal (with your own token):</li>
 </ul>
-<p>Run this command in your terminal (with your fresh token).</p>
 <pre><code class="lang-bash"><span class="comment">$</span> <span class="comment">travis</span> <span class="comment">encrypt</span> <span class="comment">GH_TOKEN=your_oath_token</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">add</code></pre>
 <ul>
 <li>Check the <code>.travis.yml</code> and make sure a new value is set.</li>
@@ -214,18 +217,18 @@ remember it. Instead encrypt it and then forget the original.</li>
 <li>Scan the log output, it should look similar to what you see in your own terminal.</li>
 <li>Check if you didn&#39;t log your environment vars and token somewhere.</li>
 <li>Fix any build errors and push your changes, and a new build will start.</li>
-<li>Near the end you&#39;d see <code>Running &quot;gh-pages:deploy&quot; (gh-pages) task</code></li>
+<li>Look for <code>Running &quot;gh-pages:deploy&quot; (gh-pages) task</code> and see if it passed.</li>
 </ul>
 </li>
-<li>It should end at <code>Done. Your build exited with 0.</code></li>
+<li>The log should end at <code>Done. Your build exited with 0.</code></li>
 <li>Your gh-pages site is now published!</li>
 <li>Browse to the github.io url of your repos and make sure you see the expected changes.</li>
 </ul>
 <h3 id="wrap-it-up">Wrap it up</h3>
 <ul>
 <li>Feel awesome for setting up continuous integration!</li>
-<li>Send a PR if you have fixes or clarifications!</li>
-<li>Leave a ticket if you found problems or have feedback.</li>
+<li>Send a PR if you have fixes or clarifications.</li>
+<li>Leave a <a href="https://github.com/Bartvds/demo-travis-gh-pages/issues">ticket</a> if you found problems or have feedback.</li>
 <li>Share this guide with friends and spread the fun.</li>
 </ul>
 <h2 id="security">Security</h2>
@@ -237,8 +240,8 @@ remember it. Instead encrypt it and then forget the original.</li>
 <p>Always double-check your settings and development logs. </p>
 <p>If you leak your token just revoke it quickly and maybe check your Github <a href="https://github.com/settings/security">security activity</a>. Then create a new token, again making sure you limit the scope. A token is harmless after you revoked it (except to your bruised ego).</p>
 <p>If you need to print the hidden output of a task that is using your token and there really is no other way then you could opt to allow the task to leak it to the logs, as long as you immediately revoke that token. Don&#39;t forget this or somebody will pwn your repos (seriously).</p>
-<p>Keep in mind that anyone with commit access to the repository can modify the grunt configuration to output the decrypted token to the build log of the project. So make sure you trust your collaborators and verify sanitised code lands in your branch (check pull requests etc).</p>
-<p>If you need this to work in a project with many collaborators and don&#39;t want to expose your account then you can create a machine user (bot account). Then give the bot commit access to your repository and create an OAuth token for from that account. Github allows this, see <a href="https://help.github.com/articles/managing-deploy-keys#machine-users">https://help.github.com/articles/managing-deploy-keys#machine-users</a>.</p>
+<p>Keep in mind that anyone with commit access to the repository can modify the Grunt configuration to output the decrypted token to the build log of. So make sure you trust your collaborators and verify no hostile code lands in your branch (check pull requests etc).</p>
+<p>If you need this to work in a project with many collaborators and don&#39;t want to expose your account then you can create a machine user (bot account). Then give the bot commit access to your repository and create an OAuth token for that account. Github allows this, see <a href="https://help.github.com/articles/managing-deploy-keys#machine-users">https://help.github.com/articles/managing-deploy-keys#machine-users</a>.</p>
 <h2 id="links">Links</h2>
 <p>Travis</p>
 <ul>
@@ -264,7 +267,7 @@ remember it. Instead encrypt it and then forget the original.</li>
 </ul>
 <h2 id="local-commands">Local commands</h2>
 <p>These work for the example Gruntfile from this repository.</p>
-<p>Have grunt global command</p>
+<p>Have global <code>grunt</code> command</p>
 <pre><code class="lang-bash"><span class="comment">$</span> <span class="comment">npm</span> <span class="comment">install</span> <span class="comment">grunt</span>-<span class="comment">cli</span> <span class="literal">-</span><span class="comment">g</code></pre>
 <p>Install dependencies</p>
 <pre><code class="lang-bash"><span class="variable">$ </span>npm install</code></pre>
@@ -289,7 +292,7 @@ remember it. Instead encrypt it and then forget the original.</li>
 
 
     <hr/>
-    <p>Generated at 2014-05-14T08:51:05.439Z</p>
+    <p>Generated at 2014-05-14T09:28:30.031Z</p>
 </div>
 </body>
 </html>
