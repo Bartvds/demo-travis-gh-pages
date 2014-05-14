@@ -21,7 +21,7 @@ module.exports = function (grunt) {
 			options: {
 				template: './template/page.html',
 				templateContext: {
-					title: '<%=pkg.title%>',
+					title: '<%=pkg.name%>',
 					description: '<%=pkg.description%>',
 					author: '<%=pkg.author.name%>',
 					date: new Date().toISOString()

@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/Bartvds/demo-gh-pages-publish.png?branch=master)](http://travis-ci.org/Bartvds/demo-gh-pages-publish)
 
-> Use Grunt and Travis-CI to publish content to github-pages
+> Use Grunt and Travis-CI to publish content to gh-pages
 
 **Note** pre-release: flow works but still polishing the text, spotting typos etc.
 
@@ -26,7 +26,7 @@ Refer to the content of the [master branch](https://github.com/Bartvds/demo-gh-p
 
 Check the [gh-pages](https://github.com/Bartvds/demo-gh-pages-publish/tree/gh-pages) branch and view [the result](http://bartvds.github.io/demo-gh-pages-publish) in your browser. 
 
-This bare-bones demo will render the `README.md` to html using [grunt-markdown](https://www.npmjs.org/package/grunt-markdown). This is a simple example to show the process, but the flow can be used with any site generator (we use it with [docpad](http://docpad.org/)). 
+This bare-bones demo will render the `README.md` to html using [grunt-markdown](https://www.npmjs.org/package/grunt-markdown). This is a simple example to show the general process, but the flow can be used with any site generator (for example we use it with [docpad](http://docpad.org/)). 
 
 There are so many great grunt plugins anything is possible, and if that is not enough you can use grunt to work with pretty much any npm module or shell command.
 
@@ -60,7 +60,7 @@ $ gem install travis
 Follow these steps to set it up for you project. To get started you can copy the code from [this live example](https://github.com/Bartvds/demo-gh-pages-publish/).
 
 
-#### Create a project that generates a static site
+### Create a project that generates a static site
 
 -	Host it on github in the master branch.
 -	Configure a Gruntfile (or start from the example).
@@ -69,12 +69,12 @@ Follow these steps to set it up for you project. To get started you can copy the
 To keep the example simple we use [grunt-markdown](https://www.npmjs.org/package/grunt-markdown) to convert the `README.md` to html, wrapped in a simple template.
 
 
-#### Create a 'gh-pages' branch on github.com
+### Create a 'gh-pages' branch on github.com
 
 -	Using your terminal or the github website interface. 
 
 
-#### Configure the 'grunt-gh-pages' plugin.
+### Configure the 'grunt-gh-pages' plugin.
 
 -	See the example Gruntfile. 
 -	Notice the example has two targets:
@@ -82,10 +82,12 @@ To keep the example simple we use [grunt-markdown](https://www.npmjs.org/package
 	-	The target that will run on Travis using the OAuth token. In the example it will look for a environment variable `GH_TOKEN`.
 	-	Make sure the branches and both urls are correct.
 -	It is **very important** that the target with the token is set to `silent: true` or it will leak your token in the build log!
+-	Make sure the `user` variable has a valid name and email (the example it reads from package.json)
+	-	Github will not accept commits without this.
 -	For more info see the [grunt-gh-pages documentation](https://www.npmjs.org/package/grunt-gh-pages).
 
 
-#### Do a publish test
+### Do a publish test
 
 -	Make sure your site builds correctly to the `./public` folder.
 -	Push the first version to `gh-pages` using the `$ grunt publish` task. It will ask for your user-name/password.
@@ -93,14 +95,14 @@ To keep the example simple we use [grunt-markdown](https://www.npmjs.org/package
 -	Browse to the github.io url of your repos and make sure you see your site. 
 
 
-#### Activate the Travis webhooks for your project
+### Activate the Travis webhooks for your project
 
 -	Go to https://travis-ci.org/profile.
 -	Sync your github account to refresh the list of repositories.
 -	Enable Travis for this project (see [step #2 of the docs](http://docs.travis-ci.com/user/getting-started/#Step-two%3A-Activate-GitHub-Webhook))
 
 
-#### Create your `.travis.yml` in the project root.
+### Create your `.travis.yml` in the project root.
 
 -	Copy the the content from the example.
 -	Notice the secure value, it is encrypted using public key cryptography. 
@@ -110,7 +112,7 @@ To keep the example simple we use [grunt-markdown](https://www.npmjs.org/package
 -	Validate the content using [travis-lint](http://docs.travis-ci.com/user/travis-lint/).
 
 
-#### Create an OAuth token for your github account.
+### Create an OAuth token for your github account.
 
 - Go to https://github.com/settings/applications.
 - In the 'personal-access-tokens' section click the 'Generate new token' button:
@@ -123,7 +125,7 @@ To keep the example simple we use [grunt-markdown](https://www.npmjs.org/package
 -	Revoke tokens you don't really use.
 
 
-#### Add the token to the secure section in `.travis.yml`
+### Add the token to the secure section in `.travis.yml`
 
 -	Remove the existing variable (the big base64 string).
 -	Use the travis gem to store the token as `GH_TOKEN` environment variable. (more info in the [docs](http://docs.travis-ci.com/user/build-configuration/#Secure-environment-variables))
@@ -137,7 +139,7 @@ $ travis encrypt GH_TOKEN=your_oath_token --add
 -	Check the `.travis.yml` and make sure a new value is set.
 
 
-#### Deploy your site
+### Deploy your site
 
 -	Add the `./public` folder to `.gitignore`
 -	Commit the source files.
@@ -158,12 +160,12 @@ $ travis encrypt GH_TOKEN=your_oath_token --add
 -	Browse to the github.io url of your repos and make sure you see the expected changes.
 
 
-#### Wrap it up
+### Wrap it up
 
- -	Feel awesome for setting up continuous integration!
- -	Leave a ticket if you got any feedback.
- -	Share this guide with friends and share the fun.
- -	Fork the repos and send a PR if you have fixes or clarifications!
+-	Fork the repos and send a PR if you have fixes or clarifications!
+-	Leave a ticket if you encountered problems or have any feedback.
+-	Share this guide with friends and share the fun.
+-	Feel awesome for setting up continuous integration!
 
 
 ## Security
@@ -177,15 +179,15 @@ Always double-check your settings and development logs.
 
 If you leak your token just revoke it quickly and maybe check your Github [security activity](https://github.com/settings/security). Then create a new token, again making sure you limit the scope. A token is harmless after you revoked it (except to your bruised ego).
 
-Keep in mind that anyone with commit access to the repository can modify the build to output the decrypted token to the build log of the project. So make sure only sanitised code lands in your branch (check pull requests etc) and trust your collaborators.
+If you need to print the hidden output of a task that is using your token and there really is no other way then you could opt to allow the task to leak it to the logs, as long as you immediately revoke that token. Don't forget this or somebody will pwn your repos (seriously).
 
-If you need this to work in a project with many collaborators and don't want to expose your account then you can create a machine user (bot account) and setup a github organisation. Then give the bot commit access to your repository and create an Oath token for from that account. This is allowed per TOS, see https://help.github.com/articles/managing-deploy-keys#machine-users.
+Keep in mind that anyone with commit access to the repository can modify the grunt configuration to output the decrypted token to the build log of the project. So make sure you trust your collaborators and verify sanitised code lands in your branch (check pull requests etc).
+
+If you need this to work in a project with many collaborators and don't want to expose your account then you can create a machine user (bot account). Then give the bot commit access to your repository and create an OAuth token for from that account. Github allows this, see https://help.github.com/articles/managing-deploy-keys#machine-users.
 
 
 ## Links
 
-Some links for more information:
--	
 Travis
 
 -	http://docs.travis-ci.com/	
@@ -197,6 +199,8 @@ Github
 
 -	https://pages.github.com/
 -	https://github.com/settings/applications
+-	https://github.com/settings/security
+-	https://developer.github.com/v3/oauth/#scopes
 -	https://help.github.com/articles/managing-deploy-keys#machine-users  
 
 Grunt
@@ -235,7 +239,7 @@ Clean `./public`
 $ grunt clean
 ````
 
-Build & push website using CLI name/password
+Build & push website using CLI user-name/password
 
 ````bash
 $ grunt publish
@@ -244,9 +248,9 @@ $ grunt publish
 
 ## Thanks
 
--	Tim Schau - for creating grunt-gh-pages
+-	Tim Schau (@tschaub)- for creating grunt-gh-pages
 -	gruntjs - powerful tasks runner with near limitless choice of plugins
--	github - changing the game with powerful version control and project tools
+-	github - changing the game with free version control and capable project tools
 -	travis - being a classy gent and introducing many people to continuous integration
 -	you - for being awesome
 

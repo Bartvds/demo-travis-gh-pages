@@ -2,6 +2,7 @@
   "name": "demo-gh-pages-public",
   "private": true,
   "version": "0.0.1",
+  "description": "DefinitelyTyped definition header utils",
   "homepage": "http://bartvds.github.io/demo-gh-pages-public",
   "author": {
     "name": "Bart van der Schoor",
