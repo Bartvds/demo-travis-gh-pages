@@ -7,14 +7,14 @@
     <meta name="author" content="Bart van der Schoor">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700,700italic,400italic" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
     <style type="text/css">
         html, body {
-            font-family: "Lato", sans-serif;
+            font-family: Helvetica, arial, freesans, clean, sans-serif;
             background-color: #eee;
             color: #555;
             line-height: 1.6em;
+            font-size: 0.95em;
         }
         body {
             overflow-y: visible;
@@ -86,10 +86,7 @@
 <ul>
 <li>Be comfortable using Github and ready to get hands-on with continuous integration.</li>
 <li>Have some skill in reading docs and figuring things out if something unexpected turns up.</li>
-<li>Have some experience configuring Grunt tasks and use it to build a static website.<ul>
-<li>Use any site generator you like, as long as it outputs a complete site into a single directory.</li>
-</ul>
-</li>
+<li>Have some experience configuring Grunt tasks and use it to build a static website.</li>
 </ul>
 <p>Have some runtimes installed:</p>
 <ul>
@@ -132,6 +129,21 @@
 </li>
 <li>For more info see the <a href="https://www.npmjs.org/package/grunt-gh-pages">grunt-gh-pages documentation</a>.</li>
 </ul>
+<h3 id="configure-grunt-to-recognise-travis">Configure Grunt to recognise Travis</h3>
+<ul>
+<li>Add a check to the Gruntfile for the Travis environment variables to conditionally run the build.</li>
+<li>See the example Gruntfile. </li>
+</ul>
+<pre><code class="lang-js"><span class="function"><span class="title">if</span> <span class="params">( process.env.<span class="variable">TRAVIS</span> === 'true' 
+        &amp;&amp; process.env.<span class="variable">TRAVIS_SECURE_ENV_VARS</span> === 'true' 
+        &amp;&amp; process.env.<span class="variable">TRAVIS_PULL_REQUEST</span> === 'false' 
+)</span> {
+    <span class="title">grunt</span>.<span class="title">log</span>.<span class="title">writeln</span><span class="params">('executing deployment')</span>;
+    <span class="title">grunt</span>.<span class="title">task</span>.<span class="title">run</span><span class="params">('gh-pages:deploy')</span>;
+}
+<span class="title">else</span> {
+    <span class="title">grunt</span>.<span class="title">log</span>.<span class="title">writeln</span><span class="params">('skipping deployment')</span>;
+}</code></pre>
 <h3 id="do-a-publish-test">Do a publish test</h3>
 <ul>
 <li>Make sure your site builds correctly to the <code>./public</code> folder.</li>
@@ -185,7 +197,7 @@
 <li>Add the <code>./public</code> folder to <code>.gitignore</code></li>
 <li>Commit the source files.</li>
 <li>Push to the <code>master</code> branch on github.com.</li>
-<li>Go to <a href="https://travis-ci.org/">https://travis-ci.org/</a> and make sure you are logged in.</li>
+<li>Go to <a href="https://travis-ci.org/">https://travis-ci.org/</a></li>
 <li>Your project will show up on the left side (this can take a minute)<ul>
 <li>If not then refresh the page</li>
 <li>Select your project</li>
@@ -272,7 +284,7 @@
 
 
     <hr/>
-    <p>Generated at 2014-05-14T08:04:01.721Z</p>
+    <p>Generated at 2014-05-14T08:16:25.134Z</p>
 </div>
 </body>
 </html>
