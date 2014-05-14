@@ -85,6 +85,23 @@ To keep the example simple we use [grunt-markdown](https://www.npmjs.org/package
 	-	Github will not accept commits without this.
 -	For more info see the [grunt-gh-pages documentation](https://www.npmjs.org/package/grunt-gh-pages).
 
+### Configure Grunt to recognise Travis
+
+-	Add a check to the Gruntfile for the Travis environment variables to conditionally run the build.
+-	See the example Gruntfile. 
+
+````js
+if ( process.env.TRAVIS === 'true' 
+		&& process.env.TRAVIS_SECURE_ENV_VARS === 'true' 
+		&& process.env.TRAVIS_PULL_REQUEST === 'false' 
+) {
+	grunt.log.writeln('executing deployment');
+	grunt.task.run('gh-pages:deploy');
+}
+else {
+	grunt.log.writeln('skipping deployment');
+}
+````
 
 ### Do a publish test
 
@@ -143,7 +160,7 @@ $ travis encrypt GH_TOKEN=your_oath_token --add
 -	Add the `./public` folder to `.gitignore`
 -	Commit the source files.
 -	Push to the `master` branch on github.com.
--	Go to https://travis-ci.org/ and make sure you are logged in.
+-	Go to https://travis-ci.org/
 -	Your project will show up on the left side (this can take a minute)
 	-	If not then refresh the page
 	-	Select your project
