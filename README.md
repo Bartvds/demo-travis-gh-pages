@@ -6,35 +6,34 @@
 
 **Warning** pre-release version: testing in other projects, polishing the text, spotting typos etc. 
 
-**Note** If you have some results with this then please leave a [ticket](https://github.com/Bartvds/demo-travis-gh-pages/issues).
+**Note** If you have any questions or feedback then feel free to leave a [ticket](https://github
+.com/Bartvds/demo-travis-gh-pages/issues).
 
 -	View the [source repos](https://github.com/Bartvds/demo-travis-gh-pages/).
 -	Check the result on [github.io](http://bartvds.github.io/demo-travis-gh-pages).
 
 ## Intro
 
-This guide describes a setup to use [Travis-CI](https://travis-ci.org/) to build your static website using [Grunt](http://gruntjs.com/) and publish it to [github pages](https://pages.github.com/) after you commit your sources to a specific branch of your repository. 
+This guide describes a setup to enable [Travis-CI](https://travis-ci.org/) to build your static website using [Grunt](http://gruntjs.com/) and publish it to [github pages](https://pages.github.com/) after you commit your sources to a specific branch of your repository.
 
 The functionality depends on [grunt-gh-pages](https://www.npmjs.org/package/grunt-gh-pages) and an encrypted OAuth token. 
 
-Using this you can automate exporting documentation for an code project, or publish any other static site you build with grunt. 
+Using this you can automate exporting documentation for your project or publish any other static site you build with Grunt.
 
 The build triggers after every commit to the specified branch, and will also re-publish your site after you merge a Pull Request or after using the code editor on github.com. This is a simple form of *continuous integration*.
 
-This example uses Grunt but most of the information is valid for other task runners, except you'd need to find a plugin that can use an OAuth token to push content to github. 
+This example uses Grunt but most of the information is valid for other task runners, except you'd need to find a plugin that can use an OAuth token to push content to github.
 
 
 ## Demo
 
-You are looking at it!
-
 Refer to the content of the [master branch](https://github.com/Bartvds/demo-travis-gh-pages/) to see the configurations used for this specific site.
 
-Check the [gh-pages](https://github.com/Bartvds/demo-travis-gh-pages/tree/gh-pages) branch and view [the result](http://bartvds.github.io/demo-travis-gh-pages) in your browser.
+View [the result](http://bartvds.github.io/demo-travis-gh-pages) in your browser, and check the [gh-pages](https://github.com/Bartvds/demo-travis-gh-pages/tree/gh-pages) branch to see the output.
 
-This bare-bones demo will render the `README.md` to html using [grunt-markdown](https://www.npmjs.org/package/grunt-markdown). This is a simple example to show the general process, but the flow can be used with any site generator (for example we use it with [docpad](http://docpad.org/)). 
+This bare-bones demo will render the `README.md` to html using [grunt-markdown](https://www.npmjs.org/package/Grunt-markdown). This is a simple example to show the general process, but the flow can be used with any site generator (for example we use it with [docpad](http://docpad.org/)).
 
-There are so many great grunt plugins anything is possible, and if that is not enough you can use grunt to work with pretty much any npm module or shell command.
+There are so many great Grunt plugins anything is possible, and if that is not enough you can use Grunt to work with pretty much any npm module or shell command.
 
 
 ## Prerequisites
@@ -47,7 +46,7 @@ Intermediate skills
 
 Have some runtimes installed:
 
--	[nodejs](http://nodejs.org/) (to run grunt)
+-	[nodejs](http://nodejs.org/) (to run Grunt)
 -	[ruby](https://www.ruby-lang.org/en/installation/) (to run the travis gem)
 -	git v1.7.6 or better (for grunt-gh-pages) 
 
@@ -84,7 +83,8 @@ To keep the example simple we use [grunt-markdown](https://www.npmjs.org/package
 -	See the example Gruntfile. 
 -	Notice the example has two targets:
 	-	A target to run locally (for testing) that will ask for a user-name and password.
-	-	The target that will run on Travis using the OAuth token. In the example it will look for a environment variable `GH_TOKEN`.
+	-	The target that will run on Travis using the OAuth token.
+	-   In the example it will look for a environment variable `GH_TOKEN`.
 	-	Make sure the branches and both urls are correct.
 -	It is **very important** that the target with the token is set to `silent: true` or it will leak your token in the build log!
 -	Make sure the `user` variable has a valid name and email (the example it reads from package.json)
@@ -94,7 +94,8 @@ To keep the example simple we use [grunt-markdown](https://www.npmjs.org/package
 ### Configure Grunt to recognise Travis
 
 -	Add a check to the Gruntfile for the Travis environment variables to conditionally run the build.
--	See the example Gruntfile. 
+-	See the example Gruntfile, it uses the following condition.
+-   Note how the task only runs on commits (it ignores pull requests).
 
 ````js
 if ( process.env.TRAVIS === 'true' 
@@ -124,7 +125,7 @@ else {
 -	Enable Travis for this project (see [step #2 of the docs](http://docs.travis-ci.com/user/getting-started/#Step-two%3A-Activate-GitHub-Webhook))
 
 
-### Create your `.travis.yml` in the project root
+### Create your '.travis.yml' in the project root
 
 -	Copy the the content from the example.
 -	Notice the secure value, it is encrypted using public key cryptography. 
@@ -148,12 +149,11 @@ remember it. Instead encrypt it and then forget the original.
 -	Revoke tokens you don't really use.
 
 
-### Add the token to the secure section in `.travis.yml`
+### Add the token to the secure section in '.travis.yml'
 
 -	Remove the existing variable (the big base64 string).
 -	Use the travis gem to store the token as `GH_TOKEN` environment variable. (more info in the [docs](http://docs.travis-ci.com/user/build-configuration/#Secure-environment-variables))
-
-Run this command in your terminal (with your fresh token).
+-   Run this command in your terminal (with your own token):
 
 ````bash
 $ travis encrypt GH_TOKEN=your_oath_token --add
@@ -177,8 +177,8 @@ $ travis encrypt GH_TOKEN=your_oath_token --add
 	-	Scan the log output, it should look similar to what you see in your own terminal.
 	-	Check if you didn't log your environment vars and token somewhere.
 	-	Fix any build errors and push your changes, and a new build will start.
-	-   Near the end you'd see `Running "gh-pages:deploy" (gh-pages) task`
--	It should end at `Done. Your build exited with 0.`
+	-   Look for `Running "gh-pages:deploy" (gh-pages) task` and see if it passed.
+-	The log should end at `Done. Your build exited with 0.`
 -	Your gh-pages site is now published!
 -	Browse to the github.io url of your repos and make sure you see the expected changes.
 
@@ -186,8 +186,8 @@ $ travis encrypt GH_TOKEN=your_oath_token --add
 ### Wrap it up
 
 -	Feel awesome for setting up continuous integration!
--	Send a PR if you have fixes or clarifications!
--	Leave a ticket if you found problems or have feedback.
+-	Send a PR if you have fixes or clarifications.
+-	Leave a [ticket](https://github.com/Bartvds/demo-travis-gh-pages/issues) if you found problems or have feedback.
 -	Share this guide with friends and spread the fun.
 
 
@@ -204,9 +204,9 @@ If you leak your token just revoke it quickly and maybe check your Github [secur
 
 If you need to print the hidden output of a task that is using your token and there really is no other way then you could opt to allow the task to leak it to the logs, as long as you immediately revoke that token. Don't forget this or somebody will pwn your repos (seriously).
 
-Keep in mind that anyone with commit access to the repository can modify the grunt configuration to output the decrypted token to the build log of the project. So make sure you trust your collaborators and verify sanitised code lands in your branch (check pull requests etc).
+Keep in mind that anyone with commit access to the repository can modify the Grunt configuration to output the decrypted token to the build log of. So make sure you trust your collaborators and verify no hostile code lands in your branch (check pull requests etc).
 
-If you need this to work in a project with many collaborators and don't want to expose your account then you can create a machine user (bot account). Then give the bot commit access to your repository and create an OAuth token for from that account. Github allows this, see https://help.github.com/articles/managing-deploy-keys#machine-users.
+If you need this to work in a project with many collaborators and don't want to expose your account then you can create a machine user (bot account). Then give the bot commit access to your repository and create an OAuth token for that account. Github allows this, see https://help.github.com/articles/managing-deploy-keys#machine-users.
 
 
 ## Links
@@ -238,7 +238,7 @@ Grunt
 
 These work for the example Gruntfile from this repository.
 
-Have grunt global command
+Have global `grunt` command
 
 ````bash
 $ npm install grunt-cli -g
