@@ -4,20 +4,22 @@
 
 > Use Grunt and Travis-CI to publish content to gh-pages
 
-**Note** pre-release: testing in other projects, polishing the text, spotting typos etc. 
+**Warning** pre-release version: testing in other projects, polishing the text, spotting typos etc. 
 
-If you have some results with this then please leave a [ticket](https://github.com/Bartvds/demo-gh-pages-publish/issues).
+**Note** If you have some results with this then please leave a [ticket](https://github.com/Bartvds/demo-gh-pages-publish/issues).
 
--	[live](http://bartvds.github.io/demo-gh-pages-publish)
--	[source](https://github.com/Bartvds/demo-gh-pages-publish/)
+-	View the [source repos](https://github.com/Bartvds/demo-gh-pages-publish/).
+-	Check the result on [github.io](http://bartvds.github.io/demo-gh-pages-publish).
 
 ## Intro
 
-This demo shows basic setup to use [Travis-CI](https://travis-ci.org/) to build your static website using [Grunt](http://gruntjs.com/) and publish it to [github pages](https://pages.github.com/) after you commit your sources to a specific branch of your repository. The demo functionality depends on [grunt-gh-pages](https://www.npmjs.org/package/grunt-gh-pages) and an encrypted OAuth token. 
+This guide describes a setup to use [Travis-CI](https://travis-ci.org/) to build your static website using [Grunt](http://gruntjs.com/) and publish it to [github pages](https://pages.github.com/) after you commit your sources to a specific branch of your repository. 
+
+The functionality depends on [grunt-gh-pages](https://www.npmjs.org/package/grunt-gh-pages) and an encrypted OAuth token. 
 
 Using this you can automate exporting documentation for an code project, or publish any other static site you build with grunt. 
 
-It triggers after every commit to the specified branch. So this will also re-publish your site after you merge a Pull Request (handy to get community contributions live quickly) or after using the code editor on github.com. This is a simple form of *continuous integration*.
+The build triggers after every commit to the specified branch, and will also re-publish your site after you merge a Pull Request or after using the code editor on github.com. This is a simple form of *continuous integration*.
 
 This example uses Grunt but most of the information is valid for other task runners, except you'd need to find a plugin that can use an OAuth token to push content to github. 
 
