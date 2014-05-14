@@ -44,14 +44,14 @@ module.exports = function (grunt) {
 			},
 			publish: {
 				options: {
-					message: 'Publish gh=pages'
+					message: 'Publish gh-pages'
 				},
 				src: ['**/*']
 			},
 			deploy: {
 				options: {
-					message: 'Publish gh=pages (auto)',
-					repo: 'https://' + process.env.GH_TOKEN + '@github.com/Bartvds/demo-gh-pages.git',
+					message: 'Publish gh-pages (auto)',
+					repo: 'https://' + process.env.GH_TOKEN + '@github.com/Bartvds/demo-gh-pages-publish.git',
 					silent: true
 				},
 				src: ['**/*']
