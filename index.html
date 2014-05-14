@@ -28,6 +28,7 @@
         h1 {
             font-weight: 300;
             line-height: 2em;
+            border-bottom: 1px solid #cfcfcf;
         }
         a, a:visited {
             color: #666;
@@ -37,7 +38,7 @@
         }
         hr {
             border: none;
-            border-top: 1px solid #888;
+            border-top: 1px solid #cfcfcf;
         }
         blockquote {
             margin-left: 4px;
@@ -45,8 +46,8 @@
             border-left: 4px solid #777;
         }
         code {
-            font-size: 1.10em;
-            padding: 1px 4px;
+            font-size: 1.05em;
+            padding: 1px 5px;
             background-color: #efefef;
             border: 1px solid #cfcfcf;
             border-radius: 3px;
@@ -63,12 +64,11 @@
 </head>
 <body>
 <div class="col">
-<h1 id="demo-travis-gh-pages">demo-travis-gh-pages</h1>
-<p><a href="http://travis-ci.org/Bartvds/demo-travis-gh-pages"><img src="https://secure.travis-ci.org/Bartvds/demo-travis-gh-pages.png?branch=master" alt="Build Status"></a></p>
+<h1 id="demo-travis-gh-pages-build-status-https-secure-travis-ci-org-bartvds-demo-travis-gh-pages-png-branch-master-http-travis-ci-org-bartvds-demo-travis-gh-pages-">demo-travis-gh-pages <a href="http://travis-ci.org/Bartvds/demo-travis-gh-pages"><img src="https://secure.travis-ci.org/Bartvds/demo-travis-gh-pages.png?branch=master" alt="Build Status"></a></h1>
 <blockquote>
 <p>Use Grunt and Travis-CI to publish content to gh-pages</p>
 </blockquote>
-<p><strong>Warning</strong> pre-release version: testing in other projects, polishing the text, spotting typos etc. </p>
+<p><strong>Warning</strong> Beta version: logic should be good, still doing some testing, polishing the text, spotting typos etc.</p>
 <p><strong>Note</strong> If you have any questions or feedback then feel free to leave a <a href="https://github
 .com/Bartvds/demo-travis-gh-pages/issues">ticket</a>.</p>
 <ul>
@@ -147,9 +147,6 @@
 )</span> {
     <span class="title">grunt</span>.<span class="title">log</span>.<span class="title">writeln</span><span class="params">('executing deployment')</span>;
     <span class="title">grunt</span>.<span class="title">task</span>.<span class="title">run</span><span class="params">('gh-pages:deploy')</span>;
-}
-<span class="title">else</span> {
-    <span class="title">grunt</span>.<span class="title">log</span>.<span class="title">writeln</span><span class="params">('skipping deployment')</span>;
 }</code></pre>
 <h3 id="do-a-publish-test">Do a publish test</h3>
 <ul>
@@ -292,7 +289,7 @@ remember it. Instead encrypt it and then forget the original.</li>
 
 
     <hr/>
-    <p>Generated at 2014-05-14T09:28:30.031Z</p>
+    <p>Generated at 2014-05-14T09:37:58.920Z</p>
 </div>
 </body>
 </html>
