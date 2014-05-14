@@ -2,9 +2,22 @@
 
 [![Build Status](https://secure.travis-ci.org/bartvds/demo-gh-pages-publish.png?branch=master)](http://travis-ci.org/bartvds/demo-gh-pages-publish)
 
-> Use grunt and Travis-CI to publish content to your github-pages.
+> Use grunt and Travis-CI to publish content to your github-pages
 
-Source files live in `./src`, the guide uses the described flow to publish to [bartvds.github.io/demo-gh-pages-publish](http://bartvds.github.io/demo-gh-pages-publish).
+This guide uses the described flow to publish to [bartvds.github.io/demo-gh-pages-publish](http://bartvds.github
+.io/demo-gh-pages-publish)
+
+
+:warning: work-in-progress
+
+
+https://github.com/settings/applications
+
+http://docs.travis-ci.com/user/build-configuration/#Secure-environment-variables
+
+http://docs.travis-ci.com/user/encryption-keys/
+
+https://github.com/tschaub/grunt-gh-pages#optionssilent
 
 ## Build
 

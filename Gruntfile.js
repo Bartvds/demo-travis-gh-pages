@@ -19,7 +19,7 @@ module.exports = function (grunt) {
 		},
 		markdown: {
 			options: {
-				template: './src/template/page.html',
+				template: './template/page.html',
 				templateContext: {
 					title: '<%=pkg.title%>',
 					description: '<%=pkg.description%>',
@@ -31,15 +31,8 @@ module.exports = function (grunt) {
 				}
 			},
 			all: {
-				files: [
-					{
-						expand: true,
-						cwd: 'src',
-						src: '*.md',
-						dest: 'public',
-						ext: '.html'
-					}
-				]
+				src: 'README.md',
+				dest: 'public/index.html'
 			}
 		},
 		'gh-pages': {
@@ -54,12 +47,11 @@ module.exports = function (grunt) {
 				src: ['**/*']
 			},
 			deploy: {
-
 				options: {
+					repo: 'https://' + process.env.GH_TOKEN + '@github.com/Bartvds/demo-gh-pages.git',
+					silent: true
 				},
 				src: ['**/*']
-				repo: 'https://' + process.env.GH_TOKEN + '@github.com/user/private-repo.git',
-				silent: true
 			}
 		}
 	});
