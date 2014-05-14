@@ -178,13 +178,13 @@
 <li>In the &#39;personal-access-tokens&#39; section click the &#39;Generate new token&#39; button:<ul>
 <li>It is recommended to create a separate token for every project.</li>
 <li>Enter a descriptive name so you can identify it later.</li>
-<li>In the popup <em>deselect</em> all scopes except <code>repo</code>.</li>
+<li>In the popup <em>deselect</em> all scopes except <code>public_repo</code>.</li>
 <li>Click &#39;Generate token&#39; and copy the hex string.</li>
 </ul>
 </li>
 <li>Regenerate or revoke tokens as much as you like (eg: if you leaked it somewhere you just revoke it and get a new one). </li>
-<li>The <code>repo</code> scope gives write access to all your public repos! Keep your tokens safe! <em>Never</em> save somewhere to
-remember it. Instead encrypt it and then forget the original.</li>
+<li>The <code>public_repo</code> scope gives write access to all your public repos.</li>
+<li><em>Never</em> save un-encrypted tokens. Instead encrypt it and then forget the original.</li>
 <li>Revoke tokens you don&#39;t really use.</li>
 </ul>
 <h3 id="add-the-token-to-the-secure-section-in-travis-yml-">Add the token to the secure section in &#39;.travis.yml&#39;</h3>
@@ -236,7 +236,7 @@ remember it. Instead encrypt it and then forget the original.</li>
 </ol>
 <p>Always double-check your settings and development logs. </p>
 <p>If you leak your token just revoke it quickly and maybe check your Github <a href="https://github.com/settings/security">security activity</a>. Then create a new token, again making sure you limit the scope. A token is harmless after you revoked it (except to your bruised ego).</p>
-<p>If you need to print the hidden output of a task that is using your token and there really is no other way then you could opt to allow the task to leak it to the logs, as long as you immediately revoke that token. Don&#39;t forget this or somebody will pwn your repos (seriously).</p>
+<p>If you need to print the hidden output of a task that is using your token and there really is no other way then you could opt to allow the task to leak it to the logs, as long as you immediately revoke that token. Don&#39;t forget this or somebody will pwn your repositories.</p>
 <p>Keep in mind that anyone with commit access to the repository can modify the Grunt configuration to output the decrypted token to the build log. So make sure you trust your collaborators and verify no hostile code lands in your branch (check pull requests etc).</p>
 <p>If you need this to work in a project with many collaborators and don&#39;t want to expose your whole account then you can create a machine user (bot account). Then give the bot commit access to your repository and create an OAuth token for the bot account. Github allows this, see <a href="https://help.github.com/articles/managing-deploy-keys#machine-users">https://help.github.com/articles/managing-deploy-keys#machine-users</a>.</p>
 <h2 id="links">Links</h2>
@@ -289,7 +289,7 @@ remember it. Instead encrypt it and then forget the original.</li>
 
 
     <hr/>
-    <p>Generated at 2014-05-14T10:06:00.237Z</p>
+    <p>Generated at 2014-05-14T22:29:26.887Z</p>
 </div>
 </body>
 </html>
