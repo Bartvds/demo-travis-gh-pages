@@ -71,6 +71,8 @@ module.exports = function (grunt) {
 		console.log(process.env.TRAVIS_PULL_REQUEST);
 		console.log('--');
 		console.log(!process.env.TRAVIS_PULL_REQUEST);
+		console.log(process.env.TRAVIS_PULL_REQUEST);
+		console.log(typeof process.env.TRAVIS_PULL_REQUEST);
 		console.log((process.env.TRAVIS && process.env.TRAVIS_SECURE_ENV_VARS && !process.env.TRAVIS_PULL_REQUEST));
 
 		if (process.env.TRAVIS && process.env.TRAVIS_SECURE_ENV_VARS && !process.env.TRAVIS_PULL_REQUEST) {
