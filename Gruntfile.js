@@ -7,20 +7,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-markdown');
 	grunt.loadNpmTasks('grunt-gh-pages');
 
-	function getDeployMessage() {
-		var ret = '\n\n';
-		if (process.env.TRAVIS !== 'true') {
-			ret += 'did not run on travis-ci';
-			return ret;
-		}
-		ret += 'branch:       ' + (process.env.TRAVIS_BRANCH || '<unknown>') + '\n';
-		ret += 'SHA:          ' + (process.env.TRAVIS_COMMIT || '<unknown>') + '\n';
-		ret += 'range SHA:    ' + (process.env.TRAVIS_COMMIT_RANGE || '<unknown>') + '\n';
-		ret += 'build id:     ' + (process.env.TRAVIS_BUILD_ID || '<unknown>') + '\n';
-		ret += 'build number: ' + (process.env.TRAVIS_BUILD_NUMBER || '<unknown>') + '\n';
-		return ret;
-	}
-
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		jshint: {
@@ -58,24 +44,38 @@ module.exports = function (grunt) {
 			publish: {
 				options: {
 					repo: 'https://github.com/Bartvds/demo-travis-gh-pages.git',
-					message: 'publish gh-pages'
+					message: 'publish gh-pages (cli)'
 				},
 				src: ['**/*']
 			},
 			deploy: {
 				options: {
+					user: {
+						name: 'demo-travis-gh-pages',
+						email: 'bartvanderschoor@gmail.com'
+					},
 					repo: 'https://' + process.env.GH_TOKEN + '@github.com/Bartvds/demo-travis-gh-pages.git',
 					message: 'publish gh-pages (auto)' + getDeployMessage(),
-					silent: true,
-					user: {
-						name: '<%=pkg.author.name%>',
-						email: '<%=pkg.author.email%>'
-					}
+					silent: true
 				},
 				src: ['**/*']
 			}
 		}
 	});
+
+	function getDeployMessage() {
+		var ret = '\n\n';
+		if (process.env.TRAVIS !== 'true') {
+			ret += 'missing env vars for travis-ci';
+			return ret;
+		}
+		ret += 'branch:       ' + (process.env.TRAVIS_BRANCH || '<unknown>') + '\n';
+		ret += 'SHA:          ' + (process.env.TRAVIS_COMMIT || '<unknown>') + '\n';
+		ret += 'range SHA:    ' + (process.env.TRAVIS_COMMIT_RANGE || '<unknown>') + '\n';
+		ret += 'build id:     ' + (process.env.TRAVIS_BUILD_ID || '<unknown>') + '\n';
+		ret += 'build number: ' + (process.env.TRAVIS_BUILD_NUMBER || '<unknown>') + '\n';
+		return ret;
+	}
 
 	grunt.registerTask('check-deploy', function() {
 		this.requires(['build']);
@@ -85,7 +85,7 @@ module.exports = function (grunt) {
 			grunt.task.run('gh-pages:deploy');
 		}
 		else {
-			grunt.log.writeln('skipping deployment');
+			grunt.log.writeln('skipped deployment');
 		}
 	});
 
