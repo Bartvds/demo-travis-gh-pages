@@ -1,5 +1,7 @@
 'use strict';
 
+/*jshint -W003*/
+
 module.exports = function (grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-clean');

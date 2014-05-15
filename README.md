@@ -29,9 +29,9 @@ If you have a project that doesn't use github-pages but instead use old-skool FT
 
 This example uses Grunt but most of the information is valid for other task-runners, except you'd need to find a plugin that can use an OAuth token to push content to Github.
 
-You are not limited to just websites either. Why stop there? Once you understand the potentials of using encrypted variables you can get creative.
+You are not limited to just websites either. Once you understand the potential of using encrypted variables you can get really creative.
 
-The principle of encrypted variables works on most CI platform: the convenience of [Travis-CI](https://travis-ci.org/) is now challenged by [AppVeyor](http://appveyor.com/) (windows os), [Wercker](https://app.wercker.com/#explore), Shippable(https://www.shippable.com/) and many more.
+The principle of encrypted variables works on most CI platform: the convenience of [Travis-CI](https://travis-ci.org/) is now challenged by [AppVeyor](http://appveyor.com/) (windows os), [Shippable](https://www.shippable.com/), [Wercker](https://app.wercker.com/#explore) and many more.
 
 
 ## Demo
