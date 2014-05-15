@@ -182,8 +182,8 @@ $ travis encrypt GH_TOKEN=your_oath_token --add
 
 -	Feel awesome for setting up continuous deployment!
 -	Send a PR if you have fixes or clarifications.
--	Leave a [ticket](https://github.com/Bartvds/demo-travis-gh-pages/issues) if you found problems or have feedback.
--	Share this guide with friends and spread the fun.
+-	Leave a [ticket](https://github.com/Bartvds/demo-travis-gh-pages/issues) if you have feedback or found any problems.
+-	Share this guide with friends and spread the power.
 
 
 ## Security
