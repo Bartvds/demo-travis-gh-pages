@@ -11,7 +11,7 @@
 
 ## Intro
 
-This guide describes a minimal setup to enable [Travis-CI](https://travis-ci.org/) to build your static website using [Grunt](http://gruntjs.com/) and publish it to [gh-pages](https://pages.github.com/) branch after you push your sources to your gihub repository.
+This guide describes a minimal setup to enable [Travis-CI](https://travis-ci.org/) to build your static website using [Grunt](http://gruntjs.com/) and publish it to [gh-pages](https://pages.github.com/) branch after you push your sources to your Github repository.
 
 Using this you can automatically export the documentation for your code project or publish any other static site you build with Grunt.
 
@@ -21,7 +21,8 @@ Travis will clone the repository, install the dependencies and run a command. In
 
 This is a simple form of *continuous deployment*.
 
-Making this work depends on [grunt-gh-pages](https://www.npmjs.org/package/grunt-gh-pages) and encrypted OAuth token to enable Travis to push to a repository on your behalf.
+In this demo we depends on [grunt-gh-pages](https://www.npmjs.org/package/grunt-gh-pages) and a encrypted OAuth token to enable Travis to push to a repository on your behalf.
+
 
 ## Alternatives
 
@@ -29,14 +30,14 @@ If you have a project that doesn't use github-pages but instead use old-skool FT
 
 This example uses Grunt but most of the information is valid for other task-runners, except you'd need to find a plugin that can use an OAuth token to push content to Github.
 
-You are not limited to just websites either. Once you understand the potential of using encrypted variables you can get really creative.
+You data you push around is of course not limited to just websites, using encrypted variables you can get really creative.
 
-The principle of encrypted variables works on most CI platform: the convenience of [Travis-CI](https://travis-ci.org/) is now challenged by [AppVeyor](http://appveyor.com/) (windows os), [Shippable](https://www.shippable.com/), [Wercker](https://app.wercker.com/#explore) and many more.
+The principle of encrypted environment variables works on most CI platforms: [Travis-CI](https://travis-ci.org/), [AppVeyor](http://appveyor.com/) (windows os), [Shippable](https://www.shippable.com/), [Wercker](https://app.wercker.com/#explore) and many more.
 
 
 ## Demo
 
-This repository + github.io page are the demo :)
+This repository + github.io page are the demo.
 
 Refer to the content of the [master branch](https://github.com/Bartvds/demo-travis-gh-pages/) to see the configurations used for this specific site. Check the [`Gruntfile`](https://github.com/Bartvds/demo-travis-gh-pages/tree/master/Gruntfile.js) and the [`.travis.yml`](https://github.com/Bartvds/demo-travis-gh-pages/tree/master/Gruntfile.js) for the configuration.
 
@@ -44,7 +45,7 @@ View [the output](http://bartvds.github.io/demo-travis-gh-pages) in your browser
 
 This bare-bones demo will render the `README.md` to html using [grunt-markdown](https://www.npmjs.org/package/Grunt-markdown). This is a simple example to show the general process, but the flow can be used with any site generator (for example we use it with [docpad](http://docpad.org/)).
 
-There are so many great Grunt plugins anything is possible, and if that is not enough you can use Grunt to work with pretty much any npm module or shell command.
+There are many great Grunt plugins, and you can use Grunt to work with pretty much any npm module or shell command.
 
 
 ## Is all this safe?
