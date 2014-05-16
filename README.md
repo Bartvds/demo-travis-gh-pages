@@ -11,15 +11,9 @@
 
 ## Intro
 
-This guide describes a minimal setup to enable [Travis-CI](https://travis-ci.org/) to build your static website using [Grunt](http://gruntjs.com/) and publish it to [gh-pages](https://pages.github.com/) branch after you push your sources to your Github repository.
+This guide describes a minimal setup to enable [Travis-CI](https://travis-ci.org/) to build your static website using [Grunt](http://gruntjs.com/) and publish it to [gh-pages](https://pages.github.com/) branch after you push your sources to your Github repository. Using this you can automatically export the documentation for your code project or publish any other static site you build with Grunt.
 
-Using this you can automatically export the documentation for your code project or publish any other static site you build with Grunt.
-
-After every commit or merge to the specified branch a build will trigger the webhooks installed by Travis.
-
-Travis will clone the repository, install the dependencies and run a command. In this case we use Grunt to rebuild our site and push it to your repository.
-
-This is a simple form of *continuous deployment*.
+After every commit or merge to the specified branch a build will trigger the webhooks installed by Travis. Travis will clone the repository, install the dependencies and run a command. In this case we use Grunt to rebuild our site and push it to your repository. This is a simple form of *continuous deployment*.
 
 In this demo we depends on [grunt-gh-pages](https://www.npmjs.org/package/grunt-gh-pages) and a encrypted OAuth token to enable Travis to push to a repository on your behalf.
 
@@ -39,7 +33,7 @@ The principle of encrypted environment variables works on most CI platforms: [Tr
 
 This repository + github.io page are the demo.
 
-Refer to the content of the [master branch](https://github.com/Bartvds/demo-travis-gh-pages/) to see the configurations used for this specific site. Check the [`Gruntfile`](https://github.com/Bartvds/demo-travis-gh-pages/tree/master/Gruntfile.js) and the [`.travis.yml`](https://github.com/Bartvds/demo-travis-gh-pages/tree/master/Gruntfile.js) for the configuration.
+Refer to the content of the [master branch](https://github.com/Bartvds/demo-travis-gh-pages/) to see the configurations used for this specific site. Check the [`Gruntfile`](https://github.com/Bartvds/demo-travis-gh-pages/tree/master/Gruntfile.js) and [`.travis.yml`](https://github.com/Bartvds/demo-travis-gh-pages/tree/master/.travis.yml) for the configuration.
 
 View [the output](http://bartvds.github.io/demo-travis-gh-pages) in your browser, and check the [gh-pages](https://github.com/Bartvds/demo-travis-gh-pages/tree/gh-pages) branch to see the output.
 
