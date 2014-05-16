@@ -2,7 +2,7 @@
   "name": "demo-travis-gh-pages",
   "private": true,
   "version": "0.0.1",
-  "description": "DefinitelyTyped definition header utils",
+  "description": "Use Grunt and Travis-CI to publish content to github-pages",
   "homepage": "http://bartvds.github.io/demo-travis-gh-pages",
   "author": {
     "name": "Bart van der Schoor",
