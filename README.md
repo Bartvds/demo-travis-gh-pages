@@ -46,7 +46,7 @@ There are many great Grunt plugins, and you can use Grunt to work with pretty mu
 
 It is safe when your build is configured correctly and doesn't print your *decrypted* secret information to pubic logs on Travis, in the Git commit message or anywhere else.
 
-Having the *encrypted* value in public repositories is safe because the public/private-key encryption: only code that runs on Travis can see the *decrypted* value.
+Having the *encrypted* value in public repositories is safe because the public/private-key encryption: only on Travis will the variables be readable for the running code.
 
 Make sure you read the safety-section further in this guide for the details.
 
