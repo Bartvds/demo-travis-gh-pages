@@ -74,23 +74,23 @@
 <li>Check the result on <a href="http://bartvds.github.io/demo-travis-gh-pages">github.io</a>.</li>
 </ul>
 <h2 id="intro">Intro</h2>
-<p>This guide describes a minimal setup to enable <a href="https://travis-ci.org/">Travis-CI</a> to build your static website using <a href="http://gruntjs.com/">Grunt</a> and publish it to <a href="https://pages.github.com/">gh-pages</a> branch after you push your sources to your Github repository. Using this you can automatically export the documentation for your code project or publish any other static site you build with Grunt.</p>
+<p>This guide describes a minimal setup to enable <a href="https://travis-ci.org/">Travis-CI</a> to build your static website using <a href="http://gruntjs.com/">Grunt</a> and publish it to <a href="https://pages.github.com/">gh-pages</a> branch after you push your sources to your Github repository. Using this you can automatically export the documentation for your project or publish any other static site you build with Grunt.</p>
 <p>After every commit or merge to the specified branch a build will trigger the Github webhooks. Travis will then clone the repository, install the dependencies and run a command. In this case we use Grunt to rebuild our site and push it to your repository. This is a simple form of <em>continuous deployment</em>.</p>
-<p>In this demo we depends on <a href="https://www.npmjs.org/package/grunt-gh-pages">grunt-gh-pages</a> and a encrypted OAuth token to enable Travis to push to a repository on your behalf.</p>
+<p>In this demo we depends on <a href="https://www.npmjs.org/package/grunt-gh-pages">grunt-gh-pages</a> and an encrypted OAuth token to enable Travis to push to a repository on your behalf.</p>
 <h2 id="alternatives">Alternatives</h2>
 <p>If you have a project that doesn&#39;t use github-pages but instead use old-skool FTP or some other deployment method, then you replace the gh-pages task with a Grunt plugin that handles your scenario. You skip the Github Oath token and encrypt the credentials needed for the plugin of your choice.</p>
 <p>This example uses Grunt but most of the information is valid for other task-runners, except you&#39;d need to find a plugin that can use an OAuth token to push content to Github.</p>
 <p>The data you push around is of course not limited to just websites; using encrypted variables you can get really creative.</p>
 <p>The principle of encrypted environment variables works on most CI platforms: <a href="https://travis-ci.org/">Travis-CI</a>, <a href="http://appveyor.com/">AppVeyor</a> (windows os), <a href="https://www.shippable.com/">Shippable</a>, <a href="https://app.wercker.com/#explore">Wercker</a> and many more.</p>
 <h2 id="demo">Demo</h2>
-<p>This repository an it&#39;s github.io page are the demo.</p>
+<p>This repository and it&#39;s github.io page are the demo.</p>
 <p>Refer to the content of the <a href="https://github.com/Bartvds/demo-travis-gh-pages/">master branch</a> to see the configurations used for this specific site. Check the <a href="https://github.com/Bartvds/demo-travis-gh-pages/tree/master/Gruntfile.js"><code>Gruntfile</code></a> and <a href="https://github.com/Bartvds/demo-travis-gh-pages/tree/master/.travis.yml"><code>.travis.yml</code></a> for the configuration.</p>
 <p>View <a href="http://bartvds.github.io/demo-travis-gh-pages">the output</a> in your browser, and check the <a href="https://github.com/Bartvds/demo-travis-gh-pages/tree/gh-pages">gh-pages</a> branch to see the output. Have a look at the generated <a href="https://github.com/Bartvds/demo-travis-gh-pages/commits/gh-pages">commit messages</a> that link to the diff of the source commits.</p>
 <p>This bare-bones demo will render the <code>README.md</code> to html using <a href="https://www.npmjs.org/package/Grunt-markdown">grunt-markdown</a>. This is a simple example to show the general process, but the flow can be used with any site generator (for example we use it with <a href="http://docpad.org/">docpad</a>).</p>
 <p>There are many great Grunt plugins, and you can use Grunt to work with pretty much any npm module or shell command.</p>
 <h2 id="is-this-safe-">Is this safe?</h2>
 <p>It is safe when your build is configured correctly and doesn&#39;t print your <em>decrypted</em> secret information to pubic logs on Travis, in the Git commit message or anywhere else.</p>
-<p>Having the <em>encrypted</em> value in public repositories is safe because the public/private-key encryption: only in a Travis build of this specific repository will the variables be readable for the running code.</p>
+<p>Having the <em>encrypted</em> values in public repositories is safe because the public/private-key encryption: only in a Travis build of this specific repository will the variables be readable for the running code.</p>
 <p>Make sure you read the safety-section further in this guide for the details.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Intermediate skills</p>
@@ -304,7 +304,7 @@
 
 
     <hr/>
-    <p>Generated at 2014-05-19T12:10:59.271Z</p>
+    <p>Generated at 2014-05-19T12:17:01.929Z</p>
 </div>
 </body>
 </html>
