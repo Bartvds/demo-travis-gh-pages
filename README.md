@@ -2,8 +2,6 @@
 
 > Use Grunt and Travis-CI to publish content to github-pages
 
-**Warning** Beta version: logic should be good, still doing some testing, polishing the text, spotting typos etc.
-
 **Note** If you have any questions or feedback then feel free to leave a [ticket](https://github.com/Bartvds/demo-travis-gh-pages/issues).
 
 -	View the [source repos](https://github.com/Bartvds/demo-travis-gh-pages/).
@@ -13,7 +11,7 @@
 
 This guide describes a minimal setup to enable [Travis-CI](https://travis-ci.org/) to build your static website using [Grunt](http://gruntjs.com/) and publish it to [gh-pages](https://pages.github.com/) branch after you push your sources to your Github repository. Using this you can automatically export the documentation for your code project or publish any other static site you build with Grunt.
 
-After every commit or merge to the specified branch a build will trigger the webhooks installed by Travis. Travis will clone the repository, install the dependencies and run a command. In this case we use Grunt to rebuild our site and push it to your repository. This is a simple form of *continuous deployment*.
+After every commit or merge to the specified branch a build will trigger the Github webhooks. Travis will then clone the repository, install the dependencies and run a command. In this case we use Grunt to rebuild our site and push it to your repository. This is a simple form of *continuous deployment*.
 
 In this demo we depends on [grunt-gh-pages](https://www.npmjs.org/package/grunt-gh-pages) and a encrypted OAuth token to enable Travis to push to a repository on your behalf.
 
@@ -24,29 +22,29 @@ If you have a project that doesn't use github-pages but instead use old-skool FT
 
 This example uses Grunt but most of the information is valid for other task-runners, except you'd need to find a plugin that can use an OAuth token to push content to Github.
 
-You data you push around is of course not limited to just websites, using encrypted variables you can get really creative.
+The data you push around is of course not limited to just websites; using encrypted variables you can get really creative.
 
 The principle of encrypted environment variables works on most CI platforms: [Travis-CI](https://travis-ci.org/), [AppVeyor](http://appveyor.com/) (windows os), [Shippable](https://www.shippable.com/), [Wercker](https://app.wercker.com/#explore) and many more.
 
 
 ## Demo
 
-This repository + github.io page are the demo.
+This repository an it's github.io page are the demo.
 
 Refer to the content of the [master branch](https://github.com/Bartvds/demo-travis-gh-pages/) to see the configurations used for this specific site. Check the [`Gruntfile`](https://github.com/Bartvds/demo-travis-gh-pages/tree/master/Gruntfile.js) and [`.travis.yml`](https://github.com/Bartvds/demo-travis-gh-pages/tree/master/.travis.yml) for the configuration.
 
-View [the output](http://bartvds.github.io/demo-travis-gh-pages) in your browser, and check the [gh-pages](https://github.com/Bartvds/demo-travis-gh-pages/tree/gh-pages) branch to see the output.
+View [the output](http://bartvds.github.io/demo-travis-gh-pages) in your browser, and check the [gh-pages](https://github.com/Bartvds/demo-travis-gh-pages/tree/gh-pages) branch to see the output. Have a look at the generated [commit messages](https://github.com/Bartvds/demo-travis-gh-pages/commits/gh-pages) that link to the diff of the source commits.
 
 This bare-bones demo will render the `README.md` to html using [grunt-markdown](https://www.npmjs.org/package/Grunt-markdown). This is a simple example to show the general process, but the flow can be used with any site generator (for example we use it with [docpad](http://docpad.org/)).
 
 There are many great Grunt plugins, and you can use Grunt to work with pretty much any npm module or shell command.
 
 
-## Is all this safe?
+## Is this safe?
 
 It is safe when your build is configured correctly and doesn't print your *decrypted* secret information to pubic logs on Travis, in the Git commit message or anywhere else.
 
-Having the *encrypted* value in public repositories is safe because the public/private-key encryption: only on Travis will the variables be readable for the running code.
+Having the *encrypted* value in public repositories is safe because the public/private-key encryption: only in a Travis build of this specific repository will the variables be readable for the running code.
 
 Make sure you read the safety-section further in this guide for the details.
 
@@ -76,12 +74,12 @@ $ gem install travis
 
 ## Guide
 
-Follow these steps to set things up for you project. To get started you can copy the code from [this live example](https://github.com/Bartvds/demo-travis-gh-pages/).
+Follow these steps to set things up for you project. To get started you can copy the code from this [live example](https://github.com/Bartvds/demo-travis-gh-pages/).
 
 
 ### Create a project that generates a static site
 
--	Configure a Gruntfile (or start from the example).
+-	Configure a Gruntfile (or start from the [example](https://github.com/Bartvds/demo-travis-gh-pages/blob/source/Gruntfile.js)).
 -	Output the site content to the `./public` directory.
 -	Host it on Github (we use the master branch here).
 
@@ -95,7 +93,7 @@ To keep the example simple we use [grunt-markdown](https://www.npmjs.org/package
 
 ### Configure the 'grunt-gh-pages' plugin
 
--	See the example Gruntfile. 
+-	See the example[Gruntfile](https://github.com/Bartvds/demo-travis-gh-pages/blob/source/Gruntfile.js).
 -	Notice the example has two targets:
 	-	A target to run locally that will ask for a username and password.
 	-	The target that will run on Travis using the OAuth token.
@@ -106,21 +104,6 @@ To keep the example simple we use [grunt-markdown](https://www.npmjs.org/package
 	-	Github will not accept commits without this, but because the target is set to 'silent' it will fail without telling you this.
 -	For more info see the [grunt-gh-pages documentation](https://www.npmjs.org/package/grunt-gh-pages).
 
-### Configure Grunt to recognise Travis
-
--	Add a check to the Gruntfile for the Travis environment variables to conditionally run the build.
--	See the example Gruntfile, it uses the following condition.
--	Note how the task only runs on commits (it ignores pull requests).
-
-````js
-if ( process.env.TRAVIS === 'true'
-		&& process.env.TRAVIS_SECURE_ENV_VARS === 'true'
-		&& process.env.TRAVIS_PULL_REQUEST === 'false'
-) {
-	grunt.log.writeln('executing deployment');
-	grunt.task.run('gh-pages:deploy');
-}
-````
 
 ### Do a publish test
 
@@ -137,13 +120,30 @@ if ( process.env.TRAVIS === 'true'
 -	Enable Travis for this project (see [step #2 of the docs](http://docs.travis-ci.com/user/getting-started/#Step-two%3A-Activate-GitHub-Webhook))
 
 
+### Configure Grunt to recognise Travis
+
+-	Add a check to the Gruntfile for the Travis environment variables to conditionally run the build.
+-	See the example Gruntfile, it uses the following condition:
+	-	Note how the task only runs on commits (it ignores pull requests).
+
+````js
+if ( process.env.TRAVIS === 'true'
+		&& process.env.TRAVIS_SECURE_ENV_VARS === 'true'
+		&& process.env.TRAVIS_PULL_REQUEST === 'false'
+) {
+	grunt.log.writeln('executing deployment');
+	grunt.task.run('gh-pages:deploy');
+}
+````
+
 ### Create your '.travis.yml' in the project root
 
--	Copy the the content from the example.
+-	Copy the the content from the [example](https://github.com/Bartvds/demo-travis-gh-pages/blob/source/.travis.yml).
 -	Notice the secure value, it is encrypted using public key cryptography.
 	-	The key is locked to a specific repository so it only decrypts when building this exact repository (and not in forks or pull requests).
 	-	Currently this holds one of my tokens so you'll need to replace it with your own (see below).
--	Make sure the `script` runs the correct task (eg: including the site build and the `grunt-gh-pages` target that is set to use the token in the Gruntfile).
+	-	Note how I can expose this *encrypted* token to anyone: it is worthless unless it runs on the Travis build of this repos.
+-	Make sure the `script` runs the correct task (eg: including the site build and the `grunt-gh-pages` target that uses the token in the Gruntfile).
 -	Validate the content using [travis-lint](http://docs.travis-ci.com/user/travis-lint/).
 
 
@@ -158,7 +158,7 @@ if ( process.env.TRAVIS === 'true'
 -	Regenerate or revoke tokens as much as you like (eg: if you leaked it somewhere you just revoke it and get a new one).
 -	The `public_repo` scope gives write access to all your public repos.
 -	*Never* save un-encrypted tokens. Instead encrypt it and then forget the original.
--	Revoke tokens you don't really use.
+-	Revoke any tokens you don't really use.
 
 
 ### Add the token to the secure section in '.travis.yml'
@@ -178,12 +178,12 @@ $ travis encrypt GH_TOKEN=your_oath_token --add
 
 -	Add the `./public` folder to `.gitignore`
 -	Commit the source files.
--	Push to the `master` branch on github.com.
+-	Push to your main branch on github.com (usually `master`).
 -	Go to https://travis-ci.org/
 -	Your project will show up on the left side (this can take a minute)
 	-	If not then refresh the page
 	-	Select your project
--	In the main view navigate to the latest build that triggered (can take a minute too).
+-	In the main view navigate to the latest build that triggered (can take a few minutes to show up and start).
 -	Check the log for status and errors.
 	-	Notice how it says `$ export GH_TOKEN=[secure]` near the start of the log.
 	-	Scan the log output, it should look similar to what you see in your own terminal.
@@ -192,42 +192,40 @@ $ travis encrypt GH_TOKEN=your_oath_token --add
 	-	Look for `Running "gh-pages:deploy" (gh-pages) task` and see if it passed.
 -	The log should end at `Done. Your build exited with 0.`
 -	Your gh-pages site is now published!
--	Browse to the github.io url of your repos and make sure you see the expected changes.
+-	Browse to the github.io url of your repos, force-refresh and make sure you see the expected changes (this can take a minute).
 
 
 ### Wrap it up
 
--	Feel awesome for setting up continuous deployment!
+-	Feel great for setting up continuous deployment!
 -	Send a PR if you have fixes or clarifications.
--	Leave a [ticket](https://github.com/Bartvds/demo-travis-gh-pages/issues) if you have feedback or found any problems.
--	Share this guide with friends and spread the power.
+-	If you have feedback or found any problems please leave a [ticket](https://github.com/Bartvds/demo-travis-gh-pages/issues).
+-	Share this guide with friends and share the power.
 
 
 ### Online editing
 
 -	Using this you can also use the generic code editor on github.com to edit files and republish without leaving your browser.
 -	To commit but skip a build you can add `[ci skip]` to your commit message and Travis will ignore it. (see [how-to-skip-a-build](http://docs.travis-ci.com/user/how-to-skip-a-build/))
--	Keep in mind that every save triggers a new build. Travis is a free service shared by everyone so don't waste to much of his time.
+-	Keep in mind that every save triggers a new build. Travis offers a free service shared by everyone so don't waste to much of its time.
 
 
 ## Safety
 
-
-
-You should be aware of the two main things that can go bad:
+You should be aware of the main situations that could be bad:
 
 1.	Pushing to the wrong branch or repository (mildly bad)
 2.	Leaking your un-encrypted token (really bad)
 
 Always double-check your settings and development logs.
 
-If you leak your token just revoke it quickly and maybe check your Github [security activity](https://github.com/settings/security). Then create a new token, again making sure you limit the scope. A token is harmless after you revoked it (except to your bruised ego).
+If you leak your token just revoke it quickly and maybe check your Github [security activity](https://github.com/settings/security). Then create a new token, again making sure you limit the scope. A token is harmless after you revoked it.
 
-If you need to print the hidden output of a task that is using your token and there really is no other way then you could opt to allow the task to leak it to the logs, as long as you immediately revoke that token. Don't forget this or somebody will pwn your repositories.
+If you need to print the hidden output of a task that is using your encrypted variables and there really is no other way then you could opt to allow the task to leak it to the logs, as long as you *immediately* revoke that token. Don't forget this or somebody *will* pwn your repositories (Murphy's law also works on the internet).
 
-Keep in mind that anyone with commit access to the repository can modify the Grunt configuration to output the decrypted token to the build log. So make sure you trust your collaborators and verify no hostile code lands in your branch (check pull requests etc).
+Keep in mind that anyone with commit access to the repository can modify the Grunt configuration to output the decrypted token to the build log. So make sure you trust your collaborators and verify no hostile code lands in your branch (check pull requests etc). NPM operates on trust and reviewed code and is generally safe, but still be smart and don't use flaky plugins. You could opt to lock your dependency semvers or [shrink-wrap](https://www.npmjs.org/doc/cli/npm-shrinkwrap.html) your build so you can control what dependency version get installed.
 
-If you need this to work in a project with many collaborators and don't want to expose your whole account then you can create a machine user (bot account). Then give the bot commit access to your repository and create an OAuth token for the bot account. Github allows this, see https://help.github.com/articles/managing-deploy-keys#machine-users.
+If you need this to work in a project with many collaborators and don't want to expose your whole account then you can create a machine user (bot account). Then give the bot commit access to your shared repository and create an OAuth token for it's account. Github allows this, see https://help.github.com/articles/managing-deploy-keys#machine-users.
 
 
 ## Links

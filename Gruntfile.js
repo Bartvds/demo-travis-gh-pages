@@ -65,25 +65,30 @@ module.exports = function (grunt) {
 		}
 	});
 
+	// get a formatted commit message to review changes from the commit log
+	// github will turn some of these into clickable links
 	function getDeployMessage() {
 		var ret = '\n\n';
 		if (process.env.TRAVIS !== 'true') {
 			ret += 'missing env vars for travis-ci';
 			return ret;
 		}
-		ret += 'branch:       ' + (process.env.TRAVIS_BRANCH || '<unknown>') + '\n';
-		ret += 'SHA:          ' + (process.env.TRAVIS_COMMIT || '<unknown>') + '\n';
-		ret += 'range SHA:    ' + (process.env.TRAVIS_COMMIT_RANGE || '<unknown>') + '\n';
-		ret += 'build id:     ' + (process.env.TRAVIS_BUILD_ID || '<unknown>') + '\n';
-		ret += 'build number: ' + (process.env.TRAVIS_BUILD_NUMBER || '<unknown>') + '\n';
+		ret += 'branch:       ' + process.env.TRAVIS_BRANCH + '\n';
+		ret += 'SHA:          ' + process.env.TRAVIS_COMMIT + '\n';
+		ret += 'range SHA:    ' + process.env.TRAVIS_COMMIT_RANGE + '\n';
+		ret += 'build id:     ' + process.env.TRAVIS_BUILD_ID  + '\n';
+		ret += 'build number: ' + process.env.TRAVIS_BUILD_NUMBER + '\n';
 		return ret;
 	}
 
 	grunt.registerTask('check-deploy', function() {
+		// need this
 		this.requires(['build']);
 
+		// only deploy under these conditions
 		if (process.env.TRAVIS === 'true' && process.env.TRAVIS_SECURE_ENV_VARS === 'true' && process.env.TRAVIS_PULL_REQUEST === 'false') {
 			grunt.log.writeln('executing deployment');
+			// queue deploy
 			grunt.task.run('gh-pages:deploy');
 		}
 		else {
@@ -91,27 +96,27 @@ module.exports = function (grunt) {
 		}
 	});
 
-	grunt.registerTask('prep', [
+	grunt.registerTask('prep', 'Clean-up project', [
 		'clean',
 		'jshint'
 	]);
 
-	grunt.registerTask('build', [
+	grunt.registerTask('build', 'Rebuild locally', [
 		'prep',
 		'markdown:all'
 	]);
 
-	grunt.registerTask('publish', [
+	grunt.registerTask('publish', 'Publish from CLI', [
 		'build',
 		'gh-pages:publish'
 	]);
 
-	grunt.registerTask('deploy', [
+	grunt.registerTask('deploy', 'Publish from Travis', [
 		'build',
 		'check-deploy'
 	]);
 
-	// whatever
+	// per convention set a test task
 	grunt.registerTask('test', ['build']);
 
 	grunt.registerTask('default', ['test']);
