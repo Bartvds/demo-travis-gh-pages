@@ -75,10 +75,10 @@
 </ul>
 <h2 id="intro">Intro</h2>
 <p>This guide describes a minimal setup to enable <a href="https://travis-ci.org/">Travis-CI</a> to build your static website using <a href="http://gruntjs.com/">Grunt</a> and publish it to <a href="https://pages.github.com/">gh-pages</a> branch after you push your sources to your Github repository. Using this you can automatically export the documentation for your project or publish any other static site you build with Grunt.</p>
-<p>After every commit or merge to the specified branch a build will trigger the Github webhooks. Travis will then clone the repository, install the dependencies and run a command. In this case we use Grunt to rebuild our site and push it to your repository. This is a simple form of <em>continuous deployment</em>.</p>
+<p>Every push or merge to the specified branch will trigger the Github webhooks. Travis will then clone the repository, install the dependencies and run a command. In this case we use Grunt to rebuild our site and push the site back to to your repository&#39;s <code>gh-pages</code> branch. This is a simple form of <em>continuous deployment</em>.</p>
 <p>In this demo we depends on <a href="https://www.npmjs.org/package/grunt-gh-pages">grunt-gh-pages</a> and an encrypted OAuth token to enable Travis to push to a repository on your behalf.</p>
 <h2 id="alternatives">Alternatives</h2>
-<p>If you have a project that doesn&#39;t use github-pages but instead use old-skool FTP or some other deployment method, then you replace the gh-pages task with a Grunt plugin that handles your scenario. You skip the Github Oath token and encrypt the credentials needed for the plugin of your choice.</p>
+<p>If you have a project that doesn&#39;t use github-pages but instead use old-skool FTP or some other deployment method, then you replace the gh-pages task with a Grunt plugin that handles your scenario. You skip the Github OAuth token and encrypt the credentials needed for the plugin of your choice.</p>
 <p>This example uses Grunt but most of the information is valid for other task-runners, except you&#39;d need to find a plugin that can use an OAuth token to push content to Github.</p>
 <p>The data you push around is of course not limited to just websites; using encrypted variables you can get really creative.</p>
 <p>The principle of encrypted environment variables works on most CI platforms: <a href="https://travis-ci.org/">Travis-CI</a>, <a href="http://appveyor.com/">AppVeyor</a> (windows os), <a href="https://www.shippable.com/">Shippable</a>, <a href="https://app.wercker.com/#explore">Wercker</a> and many more.</p>
@@ -304,7 +304,7 @@
 
 
     <hr/>
-    <p>Generated at 2014-05-19T12:17:01.929Z</p>
+    <p>Generated at 2014-05-19T13:07:16.431Z</p>
 </div>
 </body>
 </html>
