@@ -11,14 +11,14 @@
 
 This guide describes a minimal setup to enable [Travis-CI](https://travis-ci.org/) to build your static website using [Grunt](http://gruntjs.com/) and publish it to [gh-pages](https://pages.github.com/) branch after you push your sources to your Github repository. Using this you can automatically export the documentation for your project or publish any other static site you build with Grunt.
 
-After every commit or merge to the specified branch a build will trigger the Github webhooks. Travis will then clone the repository, install the dependencies and run a command. In this case we use Grunt to rebuild our site and push it to your repository. This is a simple form of *continuous deployment*.
+Every push or merge to the specified branch will trigger the Github webhooks. Travis will then clone the repository, install the dependencies and run a command. In this case we use Grunt to rebuild our site and push the site back to to your repository's `gh-pages` branch. This is a simple form of *continuous deployment*.
 
 In this demo we depends on [grunt-gh-pages](https://www.npmjs.org/package/grunt-gh-pages) and an encrypted OAuth token to enable Travis to push to a repository on your behalf.
 
 
 ## Alternatives
 
-If you have a project that doesn't use github-pages but instead use old-skool FTP or some other deployment method, then you replace the gh-pages task with a Grunt plugin that handles your scenario. You skip the Github Oath token and encrypt the credentials needed for the plugin of your choice.
+If you have a project that doesn't use github-pages but instead use old-skool FTP or some other deployment method, then you replace the gh-pages task with a Grunt plugin that handles your scenario. You skip the Github OAuth token and encrypt the credentials needed for the plugin of your choice.
 
 This example uses Grunt but most of the information is valid for other task-runners, except you'd need to find a plugin that can use an OAuth token to push content to Github.
 
