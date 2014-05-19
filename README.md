@@ -9,11 +9,11 @@
 
 ## Intro
 
-This guide describes a minimal setup to enable [Travis-CI](https://travis-ci.org/) to build your static website using [Grunt](http://gruntjs.com/) and publish it to [gh-pages](https://pages.github.com/) branch after you push your sources to your Github repository. Using this you can automatically export the documentation for your code project or publish any other static site you build with Grunt.
+This guide describes a minimal setup to enable [Travis-CI](https://travis-ci.org/) to build your static website using [Grunt](http://gruntjs.com/) and publish it to [gh-pages](https://pages.github.com/) branch after you push your sources to your Github repository. Using this you can automatically export the documentation for your project or publish any other static site you build with Grunt.
 
 After every commit or merge to the specified branch a build will trigger the Github webhooks. Travis will then clone the repository, install the dependencies and run a command. In this case we use Grunt to rebuild our site and push it to your repository. This is a simple form of *continuous deployment*.
 
-In this demo we depends on [grunt-gh-pages](https://www.npmjs.org/package/grunt-gh-pages) and a encrypted OAuth token to enable Travis to push to a repository on your behalf.
+In this demo we depends on [grunt-gh-pages](https://www.npmjs.org/package/grunt-gh-pages) and an encrypted OAuth token to enable Travis to push to a repository on your behalf.
 
 
 ## Alternatives
@@ -29,7 +29,7 @@ The principle of encrypted environment variables works on most CI platforms: [Tr
 
 ## Demo
 
-This repository an it's github.io page are the demo.
+This repository and it's github.io page are the demo.
 
 Refer to the content of the [master branch](https://github.com/Bartvds/demo-travis-gh-pages/) to see the configurations used for this specific site. Check the [`Gruntfile`](https://github.com/Bartvds/demo-travis-gh-pages/tree/master/Gruntfile.js) and [`.travis.yml`](https://github.com/Bartvds/demo-travis-gh-pages/tree/master/.travis.yml) for the configuration.
 
@@ -44,7 +44,7 @@ There are many great Grunt plugins, and you can use Grunt to work with pretty mu
 
 It is safe when your build is configured correctly and doesn't print your *decrypted* secret information to pubic logs on Travis, in the Git commit message or anywhere else.
 
-Having the *encrypted* value in public repositories is safe because the public/private-key encryption: only in a Travis build of this specific repository will the variables be readable for the running code.
+Having the *encrypted* values in public repositories is safe because the public/private-key encryption: only in a Travis build of this specific repository will the variables be readable for the running code.
 
 Make sure you read the safety-section further in this guide for the details.
 
