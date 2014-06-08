@@ -65,7 +65,7 @@ Have some runtimes installed:
 
 Prepare Travis:
 
--	Sign-up for a free account at [travis-ci](https://travis-ci.org/) (see [step #1 of the docs](http://docs.travis-ci.com/user/getting-started/#Step-one%3A-Sign-in) of the docs)
+-	Sign-up for a free account at [travis-ci](https://travis-ci.org/) (see [step #1 of the docs](http://docs.travis-ci.com/user/getting-started/#Step-one%3A-Sign-in))
 -	Use you terminal to install the travis gem: 
 
 ````bash
