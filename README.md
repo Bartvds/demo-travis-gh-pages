@@ -11,7 +11,7 @@
 
 This guide describes a minimal setup to enable [Travis-CI](https://travis-ci.org/) to build your static website using [Grunt](http://gruntjs.com/) and publish it to [gh-pages](https://pages.github.com/) branch after you push your sources to your Github repository. Using this you can automatically export the documentation for your project or publish any other static site you build with Grunt.
 
-Every push or merge to the specified branch will trigger the Github webhooks. Travis will then clone the repository, install the dependencies and run a command. In this case we use Grunt to rebuild our site and push the site back to to your repository's `gh-pages` branch. This is a simple form of *continuous deployment*.
+Every push or merge to the specified branch will trigger the Github webhooks. Travis will then clone the repository, install the dependencies and run a command. In this case we use Grunt to rebuild our site and push the site back to your repository's `gh-pages` branch. This is a simple form of *continuous deployment*.
 
 In this demo we depends on [grunt-gh-pages](https://www.npmjs.org/package/grunt-gh-pages) and an encrypted OAuth token to enable Travis to push to a repository on your behalf.
 
